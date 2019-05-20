@@ -66,6 +66,42 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-call-apply-arguments-bind" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/pb/2019/05/20/call-apply-arguments-bind/" class="article-date">
+  <time datetime="2019-05-20T06:20:31.000Z" itemprop="datePublished">2019-05-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/pb/2019/05/20/call-apply-arguments-bind/">call,apply,arguments,bind</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://jayechong.github.io/pb/2019/05/20/call-apply-arguments-bind/" data-id="cjvvzhlrb0000kiy77gey9vid" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-双向绑定实现之Proxy与defineProperty" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/pb/2019/04/28/双向绑定实现之Proxy与defineProperty/" class="article-date">
@@ -90,18 +126,15 @@
       
         <h2 id="观察者模式"><a href="#观察者模式" class="headerlink" title="观察者模式"></a>观察者模式</h2><p>观察者模式在软件设计中是一个对象，维护一个依赖列表，当任何状态发生改变自动通知他们。</p>
 <h2 id="发布订阅模式"><a href="#发布订阅模式" class="headerlink" title="发布订阅模式"></a>发布订阅模式</h2><p>发布-订阅模式中，消息的发送方，叫做发布者，消息不会直接发送给特定的接收者，也叫订阅者。</p>
-<p><img src="/pb/2019/04/28/双向绑定实现之Proxy与defineProperty/./观察者模式和发布订阅模式.jpg" alt="观察者模式和发布订阅模式"></p>
-<h2 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h2><ul>
-<li>在观察者模式中，观察者是知道Subject的，Subject一直保持对观察者进行记录。然而，在发布订阅模式中，发布者和订阅者不知道对方的存在。他们只有通过消息代理进行通信。</li>
-<li>在发布订阅模式中，组件是松耦合的，与观察者模式相反。</li>
-<li>观察者模式大多数时候是同步的，比如当事件触发，Subject就会去调用观察者的方法。而发布-订阅模式大多数时候是异步的（消息队列）。</li>
-<li>观察者模式需要在单个应用程序地址空间中实现，而发布-订阅模式更像交互应用模式。</li>
-</ul>
-
+        
+          <p class="article-more-link">
+            <a href="/pb/2019/04/28/双向绑定实现之Proxy与defineProperty/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jayechong.github.io/pb/2019/04/28/双向绑定实现之Proxy与defineProperty/" data-id="cjv0v8ti30000h5y7ndgb6war" class="article-share-link">Share</a>
+      <a data-url="https://jayechong.github.io/pb/2019/04/28/双向绑定实现之Proxy与defineProperty/" data-id="cjvvzhlri0002kiy7pukxlibh" class="article-share-link">Share</a>
       
       
     </footer>
@@ -134,17 +167,15 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>使用Hexo和GitHub一分钟快速搭建属于自己的个人学习网站</p>
-<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm i hexo-cli -g</span><br><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-<h3 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># URL</span><br><span class="line">## If your site is put in a subdirectory, set url as &apos;http://yoursite.com/child&apos; and root as &apos;/child/&apos;</span><br><span class="line">url: http://yoursite.com/child</span><br><span class="line">root: /child/</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: https://github.com/yourname/your_repo.git</span><br><span class="line">  branch: gh-pages</span><br></pre></td></tr></table></figure>
-<h3 id="完成"><a href="#完成" class="headerlink" title="完成"></a>完成</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://yourname.github.io/your_path/</span><br></pre></td></tr></table></figure>
-<p>新鲜出炉</p>
-<p>就是这么迅速😏，接下来就是自己探索了</p>
-
+        
+          <p class="article-more-link">
+            <a href="/pb/2019/04/28/hexo101/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jayechong.github.io/pb/2019/04/28/hexo101/" data-id="cjv0v8ti70001h5y7oorxb8l8" class="article-share-link">Share</a>
+      <a data-url="https://jayechong.github.io/pb/2019/04/28/hexo101/" data-id="cjvvzhlrg0001kiy7nvuxikhd" class="article-share-link">Share</a>
       
       
     </footer>
@@ -172,7 +203,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/pb/archives/2019/04/">April 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/pb/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/pb/archives/2019/04/">April 2019</a></li></ul>
     </div>
   </div>
 
@@ -183,6 +214,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/pb/2019/05/20/call-apply-arguments-bind/">call,apply,arguments,bind</a>
+          </li>
         
           <li>
             <a href="/pb/2019/04/28/双向绑定实现之Proxy与defineProperty/">双向绑定实现之Proxy与defineProperty</a>
