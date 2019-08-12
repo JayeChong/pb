@@ -7,14 +7,17 @@
   
   <title>call,apply,arguments,bind | ZY</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
+  <meta name="description" content="call &amp;amp; apply该方法的语法和作用与 apply() 方法类似，只有一个区别，就是 call() 方法接受的是一个参数列表，而 apply() 方法接受的是一个包含多个参数的数组。 1fun.call(thisArg, arg1, arg2, ...)">
+<meta property="og:type" content="article">
 <meta property="og:title" content="call,apply,arguments,bind">
 <meta property="og:url" content="https://jayechong.github.io/pb/2019/05/20/call-apply-arguments-bind/index.html">
 <meta property="og:site_name" content="ZY">
+<meta property="og:description" content="call &amp;amp; apply该方法的语法和作用与 apply() 方法类似，只有一个区别，就是 call() 方法接受的是一个参数列表，而 apply() 方法接受的是一个包含多个参数的数组。 1fun.call(thisArg, arg1, arg2, ...)">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-20T06:20:31.000Z">
+<meta property="og:updated_time" content="2019-08-12T09:27:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="call,apply,arguments,bind">
+<meta name="twitter:description" content="call &amp;amp; apply该方法的语法和作用与 apply() 方法类似，只有一个区别，就是 call() 方法接受的是一个参数列表，而 apply() 方法接受的是一个包含多个参数的数组。 1fun.call(thisArg, arg1, arg2, ...)">
   
     <link rel="alternate" href="/pb/atom.xml" title="ZY" type="application/atom+xml">
   
@@ -87,11 +90,33 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h3 id="call-amp-apply"><a href="#call-amp-apply" class="headerlink" title="call &amp; apply"></a>call &amp; apply</h3><p>该方法的语法和作用与 apply() 方法类似，只有一个区别，就是 call() 方法接受的是一个参数列表，而 apply() 方法接受的是一个包含多个参数的数组。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fun.call(thisArg, arg1, arg2, ...)</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p><strong>thisArg</strong><br>在 fun 函数运行时指定的 this 值。需要注意的是，指定的 this 值并不一定是该函数执行时真正的 this 值，如果这个函数在非严格模式下运行，则指定为 null 和 undefined 的 this 值会自动指向全局对象（浏览器中就是 window 对象），同时值为原始值（数字，字符串，布尔值）的 this 会指向该原始值的自动包装对象。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getLength</span> (<span class="params"></span>) </span>&#123; <span class="keyword">return</span> <span class="keyword">this</span>.length &#125;</span><br><span class="line">getLength.call(<span class="string">'abc'</span>) <span class="comment">// 3</span></span><br></pre></td></tr></table></figure>
+<h4 id="call-amp-apply-的主要应用场景"><a href="#call-amp-apply-的主要应用场景" class="headerlink" title="call &amp; apply 的主要应用场景"></a>call &amp; apply 的主要应用场景</h4><h5 id="调用函数，传递参数"><a href="#调用函数，传递参数" class="headerlink" title="调用函数，传递参数"></a>调用函数，传递参数</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addTwo</span> (<span class="params">x, y</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x + y;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addThreeCall</span> (<span class="params">x, y, z</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> addTwo.call(<span class="keyword">this</span>, x, y) + z;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addThreeApply</span> (<span class="params">x, y, z</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> addTwo.apply(<span class="keyword">this</span>, [x, y]) + z;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="改变函数作用域"><a href="#改变函数作用域" class="headerlink" title="改变函数作用域"></a>改变函数作用域</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="string">'zy'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> Obj = &#123; <span class="attr">name</span>: <span class="string">'zhongyan'</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayName</span> (<span class="params">name</span>) = </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(sayName.call(<span class="keyword">this</span>));  <span class="comment">// zy</span></span><br><span class="line"><span class="built_in">console</span>.log(sayName.call(Obj));  <span class="comment">// zhongyan</span></span><br></pre></td></tr></table></figure>
+<h5 id="实现继承"><a href="#实现继承" class="headerlink" title="实现继承"></a>实现继承</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.sayName = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Chinese</span> (<span class="params">name</span>) </span>&#123;</span><br><span class="line">    Person.call(<span class="keyword">this</span>);</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>.ch = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        alert(<span class="string">'中国人'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> chinese = <span class="keyword">new</span> Chinese(<span class="string">'小龙'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(chinese.sayName());</span><br></pre></td></tr></table></figure>
+<h4 id="Polyfill"><a href="#Polyfill" class="headerlink" title="Polyfill"></a>Polyfill</h4><h5 id="call-Polyfill"><a href="#call-Polyfill" class="headerlink" title="call Polyfill"></a>call Polyfill</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Function</span>.prototype._call = <span class="function"><span class="keyword">function</span> (<span class="params">context</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> me = <span class="keyword">this</span>;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> me !== <span class="string">'function'</span>)</span><br><span class="line">    <span class="keyword">throw</span> <span class="built_in">Error</span>(<span class="string">'only apply to function'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> ctx = context || <span class="built_in">window</span></span><br><span class="line">    ctx.method = me</span><br><span class="line">    <span class="keyword">const</span> arg = [...arguments].slice(<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">const</span> result = ctx.method(...arg)</span><br><span class="line">    <span class="keyword">delete</span> ctx.method</span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>例子</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayName</span> (<span class="params"></span>) </span>&#123; <span class="built_in">console</span>.log(<span class="keyword">this</span>.name) &#125;</span><br><span class="line"><span class="keyword">var</span> obj = &#123; <span class="attr">name</span>: <span class="string">'zhongyan'</span> &#125;</span><br><span class="line">sayName._call(obj)</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>首先将被调用函数的的this (该方法本身)存下来。</li>
+<li>检查this是否是函数，因为call方法只用在函数上，如果不是函数则抛出Error</li>
+<li>将被调用的函数本身（this）赋值到调用者context的临时方法method上</li>
+<li>取出参数，执行context的临时方法method</li>
+<li>返回结果</li>
+<li>删除调用者的临时方法method</li>
+</ul>
+<h5 id="applyPolyfill"><a href="#applyPolyfill" class="headerlink" title="applyPolyfill"></a>applyPolyfill</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!<span class="built_in">Function</span>.prototype.call || !<span class="built_in">Function</span>.prototype.apply || !<span class="built_in">Function</span>.prototype.bind) &#123;</span><br><span class="line">    <span class="comment">// <span class="doctag">TODO:</span> 添加Polyfill</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Function</span>.prototype._apply = <span class="function"><span class="keyword">function</span> (<span class="params">context, args</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> me = <span class="keyword">this</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> me !== <span class="string">'function'</span>)</span><br><span class="line">    <span class="keyword">throw</span> <span class="built_in">Error</span>(<span class="string">'only apply to function'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> ctx = context || <span class="built_in">window</span></span><br><span class="line">    ctx.method = me</span><br><span class="line">    <span class="keyword">const</span> result = ctx.method(...args)</span><br><span class="line">    <span class="keyword">delete</span> ctx.method</span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>和call的实现基本一致，只是参数是数组形式了。</p>
+<h3 id="bind"><a href="#bind" class="headerlink" title="bind"></a>bind</h3><h4 id="Polyfill-1"><a href="#Polyfill-1" class="headerlink" title="Polyfill"></a>Polyfill</h4><h5 id="bindPolyfill"><a href="#bindPolyfill" class="headerlink" title="bindPolyfill"></a>bindPolyfill</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Function</span>.prototype._bind = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> me = <span class="keyword">this</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> me !=== <span class="string">'function'</span>)</span><br><span class="line">        <span class="keyword">throw</span> <span class="built_in">Error</span>(<span class="string">'only apply to function'</span>)</span><br><span class="line">    <span class="keyword">const</span> [ctx, ...args] = [...arguments]</span><br><span class="line">    <span class="keyword">const</span> result = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">const</span> partialArgs = [...arguments]</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span> <span class="keyword">instanceof</span> result)  <span class="comment">// new 的情况，所以这种情况我们需要忽略传入的this</span></span><br><span class="line">            <span class="keyword">return</span> me(...args, ...partialArgs)</span><br><span class="line">        <span class="keyword">return</span> me.apply(ctx, args.concat(partialArgs))</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jayechong.github.io/pb/2019/05/20/call-apply-arguments-bind/" data-id="cjvvzhlrb0000kiy77gey9vid" class="article-share-link">Share</a>
+      <a data-url="https://jayechong.github.io/pb/2019/05/20/call-apply-arguments-bind/" data-id="cjz8ay6z80000hxy7xvtfgnov" class="article-share-link">Share</a>
       
       
     </footer>
@@ -99,6 +124,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/pb/2019/08/12/二进制1的个数/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          二进制1的个数
+        
+      </div>
+    </a>
   
   
     <a href="/pb/2019/04/28/双向绑定实现之Proxy与defineProperty/" id="article-nav-older" class="article-nav-link-wrap">
@@ -127,7 +161,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/pb/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/pb/archives/2019/04/">April 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/pb/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/pb/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/pb/archives/2019/04/">April 2019</a></li></ul>
     </div>
   </div>
 
@@ -138,6 +172,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/pb/2019/08/12/二进制1的个数/">二进制1的个数</a>
+          </li>
         
           <li>
             <a href="/pb/2019/05/20/call-apply-arguments-bind/">call,apply,arguments,bind</a>

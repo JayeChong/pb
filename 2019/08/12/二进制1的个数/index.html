@@ -5,15 +5,19 @@
   
 
   
-  <title>Archives: 2019 | ZY</title>
+  <title>二进制1的个数 | ZY</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="ZY">
-<meta property="og:url" content="https://jayechong.github.io/pb/archives/2019/index.html">
+  <meta name="description" content="最简单的方式 1const n = num =&amp;gt; num.toString(2).replace(/0/g, &apos;&apos;).length 就只有这样？">
+<meta property="og:type" content="article">
+<meta property="og:title" content="二进制1的个数">
+<meta property="og:url" content="https://jayechong.github.io/pb/2019/08/12/二进制1的个数/index.html">
 <meta property="og:site_name" content="ZY">
+<meta property="og:description" content="最简单的方式 1const n = num =&amp;gt; num.toString(2).replace(/0/g, &apos;&apos;).length 就只有这样？">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-08-12T09:53:15.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ZY">
+<meta name="twitter:title" content="二进制1的个数">
+<meta name="twitter:description" content="最简单的方式 1const n = num =&amp;gt; num.toString(2).replace(/0/g, &apos;&apos;).length 就只有这样？">
   
     <link rel="alternate" href="/pb/atom.xml" title="ZY" type="application/atom+xml">
   
@@ -64,97 +68,56 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/pb/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/pb/2019/08/12/二进制1的个数/" class="archive-article-date">
-  <time datetime="2019-08-12T09:34:15.000Z" itemprop="datePublished">Aug 12</time>
+        <section id="main"><article id="post-二进制1的个数" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/pb/2019/08/12/二进制1的个数/" class="article-date">
+  <time datetime="2019-08-12T09:34:15.000Z" itemprop="datePublished">2019-08-12</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/pb/2019/08/12/二进制1的个数/">二进制1的个数</a>
+    <h1 class="article-title" itemprop="name">
+      二进制1的个数
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/pb/2019/05/20/call-apply-arguments-bind/" class="archive-article-date">
-  <time datetime="2019-05-20T06:20:31.000Z" itemprop="datePublished">May 20</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/pb/2019/05/20/call-apply-arguments-bind/">call,apply,arguments,bind</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/pb/2019/04/28/双向绑定实现之Proxy与defineProperty/" class="archive-article-date">
-  <time datetime="2019-04-28T07:56:51.000Z" itemprop="datePublished">Apr 28</time>
-</a>
+        <p>最简单的方式</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> n = <span class="function"><span class="params">num</span> =&gt;</span> num.toString(<span class="number">2</span>).replace(<span class="regexp">/0/g</span>, <span class="string">''</span>).length</span><br></pre></td></tr></table></figure>
+<p>就只有这样？</p>
+<a id="more"></a>
+<p>一个数N的二进制和（N-1）的二进制个数永远相差一个 1。<br>根据这个我们可以让 N 和 N-1 做与运算得到新的值 M（二进制M 1 的个数比 N 中 1的个数少一个） 再和 M-1 做与运算，重复直到得到的值为0。（最终所有的1都会被与掉）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> n = <span class="function">(<span class="params">num</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> count = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (num) &#123;</span><br><span class="line">        num &amp;= num - <span class="number">1</span>;</span><br><span class="line">        count ++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> count;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/pb/2019/04/28/双向绑定实现之Proxy与defineProperty/">双向绑定实现之Proxy与defineProperty</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/pb/2019/04/28/hexo101/" class="archive-article-date">
-  <time datetime="2019-04-28T07:29:56.000Z" itemprop="datePublished">Apr 28</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://jayechong.github.io/pb/2019/08/12/二进制1的个数/" data-id="cjz8ay6zg0002hxy7bkch80qq" class="article-share-link">Share</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/pb/2019/04/28/hexo101/">Hexo101</a>
-    </h1>
-  
-
-    </header>
+      
+    </footer>
   </div>
-</article>
+  
+    
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/pb/2019/05/20/call-apply-arguments-bind/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">call,apply,arguments,bind</div>
+    </a>
   
+</nav>
 
+  
+</article>
 
 </section>
         
