@@ -5,19 +5,19 @@
   
 
   
-  <title>二进制1的个数 | ZY</title>
+  <title>调用堆栈 | ZY</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="最简单的方式 1const n = num =&amp;gt; num.toString(2).replace(/0/g, &apos;&apos;).length 就只有这样？">
+  <meta name="description" content="执行上下文的类型 全局执行上下文：只有一个，浏览器中的全局对象是window对象，node里面是global。 函数执行上下文：多个，只有在函数被调用的时候才会被创建，每次调用函数都会创建一个新的执行上下文。 Eval函数执行上下文：指运行在eval函数中的代码，很少用且不建议使用。  执行栈">
 <meta property="og:type" content="article">
-<meta property="og:title" content="二进制1的个数">
-<meta property="og:url" content="https://jayechong.github.io/pb/2019/08/12/二进制1的个数/index.html">
+<meta property="og:title" content="调用堆栈">
+<meta property="og:url" content="https://jayechong.github.io/pb/2019/09/03/调用堆栈/index.html">
 <meta property="og:site_name" content="ZY">
-<meta property="og:description" content="最简单的方式 1const n = num =&amp;gt; num.toString(2).replace(/0/g, &apos;&apos;).length 就只有这样？">
+<meta property="og:description" content="执行上下文的类型 全局执行上下文：只有一个，浏览器中的全局对象是window对象，node里面是global。 函数执行上下文：多个，只有在函数被调用的时候才会被创建，每次调用函数都会创建一个新的执行上下文。 Eval函数执行上下文：指运行在eval函数中的代码，很少用且不建议使用。  执行栈">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-15T03:52:44.000Z">
+<meta property="og:updated_time" content="2019-09-03T07:50:08.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="二进制1的个数">
-<meta name="twitter:description" content="最简单的方式 1const n = num =&amp;gt; num.toString(2).replace(/0/g, &apos;&apos;).length 就只有这样？">
+<meta name="twitter:title" content="调用堆栈">
+<meta name="twitter:description" content="执行上下文的类型 全局执行上下文：只有一个，浏览器中的全局对象是window对象，node里面是global。 函数执行上下文：多个，只有在函数被调用的时候才会被创建，每次调用函数都会创建一个新的执行上下文。 Eval函数执行上下文：指运行在eval函数中的代码，很少用且不建议使用。  执行栈">
   
     <link rel="alternate" href="/pb/atom.xml" title="ZY" type="application/atom+xml">
   
@@ -68,10 +68,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-二进制1的个数" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-调用堆栈" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/pb/2019/08/12/二进制1的个数/" class="article-date">
-  <time datetime="2019-08-12T09:34:15.000Z" itemprop="datePublished">2019-08-12</time>
+    <a href="/pb/2019/09/03/调用堆栈/" class="article-date">
+  <time datetime="2019-09-03T07:45:03.000Z" itemprop="datePublished">2019-09-03</time>
 </a>
     
   </div>
@@ -82,7 +82,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      二进制1的个数
+      调用堆栈
     </h1>
   
 
@@ -90,23 +90,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>最简单的方式</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> n = <span class="function"><span class="params">num</span> =&gt;</span> num.toString(<span class="number">2</span>).replace(<span class="regexp">/0/g</span>, <span class="string">''</span>).length</span><br></pre></td></tr></table></figure>
-<p>就只有这样？</p>
-<a id="more"></a>
-<p>一个数N的二进制和（N-1）的二进制个数永远相差一个 1。<br>根据这个原理我们可以让 N 和 N-1 做与运算得到新的值 M（二进制M 1 的个数比 N 中 1的个数少一个） 再和 M-1 做与运算，重复直到得到的值为0。（最终所有的1都会被与掉）</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> n = <span class="function">(<span class="params">num</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> count = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (num) &#123;</span><br><span class="line">        num &amp;= num - <span class="number">1</span>;</span><br><span class="line">        count ++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> count;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>延伸一个问题：从一个数组中找出N个数，使它的的和为M的所有可能。</p>
-<p>首先这个问题如果是N=1，就是直接查找。如果N=2就是每次选好一个数再和其它数累加。但是随着N越来越大简单的循环累计将变得极其复杂。</p>
-<p>解法：</p>
-<ul>
-<li>首先数组长度为len的数组从中选取N（0-len）个数的全排列是有限的。</li>
+        <h3 id="执行上下文的类型"><a href="#执行上下文的类型" class="headerlink" title="执行上下文的类型"></a>执行上下文的类型</h3><ul>
+<li><strong>全局执行上下文</strong>：只有一个，浏览器中的全局对象是window对象，node里面是global。</li>
+<li><strong>函数执行上下文</strong>：多个，只有在函数被调用的时候才会被创建，每次调用函数都会创建一个新的执行上下文。</li>
+<li><strong>Eval函数执行上下文</strong>：指运行在eval函数中的代码，很少用且不建议使用。</li>
 </ul>
-
+<h3 id="执行栈"><a href="#执行栈" class="headerlink" title="执行栈"></a>执行栈</h3>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jayechong.github.io/pb/2019/08/12/二进制1的个数/" data-id="ck04ov4750002zwy7qxbwn40l" class="article-share-link">Share</a>
+      <a data-url="https://jayechong.github.io/pb/2019/09/03/调用堆栈/" data-id="ck04ov47k0004zwy7isd37czf" class="article-share-link">Share</a>
       
       
     </footer>
@@ -115,19 +108,10 @@
     
 <nav id="article-nav">
   
-    <a href="/pb/2019/09/03/调用堆栈/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          调用堆栈
-        
-      </div>
-    </a>
   
-  
-    <a href="/pb/2019/05/20/call-apply-arguments-bind/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/pb/2019/08/12/二进制1的个数/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">call,apply,arguments,bind</div>
+      <div class="article-nav-title">二进制1的个数</div>
     </a>
   
 </nav>
