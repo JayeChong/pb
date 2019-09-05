@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>git指南 | ZY</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Git基础gitbook Git 和其它版本控制系统（包括 Subversion 和近似工具）的主要差别在于 Git 对待数据的方法。  概念上来区分，其它大部分系统以文件变更列表的方式存储信息。 这类系统（CVS、Subversion、Perforce、Bazaar 等等）将它们保存的信息看作是一组基本文件和每个文件随时间逐步累积的差异。反之，Git 更像是把数据看作是对小型文件系统的一组快照。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git指南">
+<meta property="og:url" content="https://jayechong.github.io/pb/2019/09/04/git指南/index.html">
+<meta property="og:site_name" content="ZY">
+<meta property="og:description" content="Git基础gitbook Git 和其它版本控制系统（包括 Subversion 和近似工具）的主要差别在于 Git 对待数据的方法。  概念上来区分，其它大部分系统以文件变更列表的方式存储信息。 这类系统（CVS、Subversion、Perforce、Bazaar 等等）将它们保存的信息看作是一组基本文件和每个文件随时间逐步累积的差异。反之，Git 更像是把数据看作是对小型文件系统的一组快照。">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://jayechong.github.io/pb/2019/09/04/git指南/areas.png">
+<meta property="og:image" content="https://jayechong.github.io/pb/2019/09/04/git指南/commit-and-tree.png">
+<meta property="og:image" content="https://jayechong.github.io/pb/2019/09/04/git指南/commits-and-parents.png">
+<meta property="og:image" content="https://jayechong.github.io/pb/2019/09/04/git指南/basic-merging-1.png">
+<meta property="og:image" content="https://jayechong.github.io/pb/2019/09/04/git指南/basic-merging-2.png">
+<meta property="og:image" content="https://jayechong.github.io/pb/2019/09/04/git指南/lr-branches-1.png">
+<meta property="og:image" content="https://jayechong.github.io/pb/2019/09/04/git指南/lr-branches-2.png">
+<meta property="og:image" content="https://jayechong.github.io/pb/2019/09/04/git指南/basic-rebase-1.png">
+<meta property="og:image" content="https://jayechong.github.io/pb/2019/09/04/git指南/basic-rebase-2.png">
+<meta property="og:image" content="https://jayechong.github.io/pb/2019/09/04/git指南/basic-rebase-1.png">
+<meta property="og:image" content="https://jayechong.github.io/pb/2019/09/04/git指南/basic-rebase-3.png">
+<meta property="og:image" content="https://jayechong.github.io/pb/2019/09/04/git指南/basic-rebase-4.png">
+<meta property="og:updated_time" content="2019-09-05T02:57:49.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="git指南">
+<meta name="twitter:description" content="Git基础gitbook Git 和其它版本控制系统（包括 Subversion 和近似工具）的主要差别在于 Git 对待数据的方法。  概念上来区分，其它大部分系统以文件变更列表的方式存储信息。 这类系统（CVS、Subversion、Perforce、Bazaar 等等）将它们保存的信息看作是一组基本文件和每个文件随时间逐步累积的差异。反之，Git 更像是把数据看作是对小型文件系统的一组快照。">
+<meta name="twitter:image" content="https://jayechong.github.io/pb/2019/09/04/git指南/areas.png">
+  
+    <link rel="alternate" href="/pb/atom.xml" title="ZY" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/pb/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/pb/" id="logo">ZY</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/pb/" id="subtitle">芝兰生于深谷，不以无人而不芳 君子修身养德，不以穷困而改志</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/pb/">Home</a>
+        
+          <a class="main-nav-link" href="/pb/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/pb/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://jayechong.github.io/pb"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-git指南" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/pb/2019/09/04/git指南/" class="article-date">
+  <time datetime="2019-09-04T03:29:03.000Z" itemprop="datePublished">2019-09-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      git指南
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Git基础"><a href="#Git基础" class="headerlink" title="Git基础"></a>Git基础</h3><p><a href="https://git-scm.com/book/zh/v2" target="_blank" rel="noopener">gitbook</a></p>
+<p>Git 和其它版本控制系统（包括 Subversion 和近似工具）的主要差别在于 Git 对待数据的方法。</p>
+<blockquote>
+<p>概念上来区分，其它大部分系统以文件变更列表的方式存储信息。 这类系统（CVS、Subversion、Perforce、Bazaar 等等）将它们保存的信息看作是一组基本文件和每个文件随时间逐步累积的差异。反之，Git 更像是把数据看作是对小型文件系统的一组快照。 每次你提交更新，或在 Git 中保存项目状态时，它主要对当时的全部文件制作一个快照并保存这个快照的索引。 为了高效，如果文件没有修改，Git 不再重新存储该文件，而是只保留一个链接指向之前存储的文件。 Git 对待数据更像是一个<strong>快照流</strong>。</p>
+</blockquote>
+<p>Git 的分支实质上仅是包含所指对象校验和（长度为 40 的 SHA-1 值字符串）的文件，所以它的创建和销毁都异常高效。 创建一个新分支就相当于往一个文件中写入 41 个字节（40 个字符和 1 个换行符），如此的简单能不快吗？</p>
+<p>这与过去大多数版本控制系统形成了鲜明的对比，它们在创建分支时，将所有的项目文件都复制一遍，并保存到一个特定的目录。 完成这样繁琐的过程通常需要好几秒钟，有时甚至需要好几分钟。所需时间的长短，完全取决于项目的规模。而在 Git 中，任何规模的项目都能在瞬间创建新分支。 同时，由于每次提交都会记录父对象，所以寻找恰当的合并基础（译注：即共同祖先）也是同样的简单和高效。 这些高效的特性使得 Git 鼓励开发人员频繁地创建和使用分支。</p>
+<a id="more"></a>
+<h4 id="三种状态"><a href="#三种状态" class="headerlink" title="三种状态"></a>三种状态</h4><p><img src="/pb/2019/09/04/git指南/./areas.png" alt="三种状态"></p>
+<p>基本操作流程：</p>
+<ul>
+<li>在工作目录中修改文件。</li>
+<li>暂存文件，将文件的快照放入暂存区域。</li>
+<li>提交更新，找到暂存区域的文件，将快照永久性存储到 Git 仓库目录。</li>
+</ul>
+<h4 id="Git配置"><a href="#Git配置" class="headerlink" title="Git配置"></a>Git配置</h4><p>Git 自带一个 git config 的工具来帮助设置控制 Git 外观和行为的配置变量。 这些变量存储在三个不同的位置：</p>
+<ol>
+<li><p>/etc/gitconfig 文件: 包含系统上每一个用户及他们仓库的通用配置。 如果使用带有 –system 选项的 git config 时，它会从此文件读写配置变量。</p>
+</li>
+<li><p>~/.gitconfig 或 ~/.config/git/config 文件：只针对当前用户。 可以传递 –global 选项让 Git 读写此文件。</p>
+</li>
+<li><p>当前使用仓库的 Git 目录中的 config 文件（就是 .git/config）：针对该仓库。</p>
+</li>
+</ol>
+<p>每一个级别覆盖上一级别的配置，所以 .git/config 的配置变量会覆盖 /etc/gitconfig 中的配置变量。</p>
+<p>当安装完 Git 应该做的第一件事就是设置你的用户名称与邮件地址。 这样做很重要，因为每一个 Git 的提交都会使用这些信息，并且它会写入到你的每一次提交中，不可更改：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name <span class="string">"John Doe"</span></span><br><span class="line">$ git config --global user.email johndoe@example.com</span><br></pre></td></tr></table></figure>
+<p>检查配置信息<br>如果想要检查你的配置，可以使用 git config –list 命令来列出所有 Git 当时能找到的配置。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ git config --list</span><br><span class="line">user.name=John Doe</span><br><span class="line">user.email=johndoe@example.com</span><br><span class="line">color.status=auto</span><br><span class="line">color.branch=auto</span><br><span class="line">color.interactive=auto</span><br><span class="line">color.diff=auto</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>你可能会看到重复的变量名，因为 Git 会从不同的文件中读取同一个配置（例如：/etc/gitconfig 与 ~/.gitconfig）。 这种情况下，Git 会使用它找到的每一个变量的最后一个配置。</p>
+<p>你可以通过输入 <code>git config &lt;key&gt;</code>： 来检查 Git 的某一项配置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config user.name</span><br><span class="line">John Doe</span><br></pre></td></tr></table></figure>
+<h4 id="跳过使用暂存区域"><a href="#跳过使用暂存区域" class="headerlink" title="跳过使用暂存区域"></a>跳过使用暂存区域</h4><p> Git 提供了一个跳过使用暂存区域的方式， 只要在提交的时候，给 git commit 加上 -a 选项，Git 就会自动把所有已经跟踪过的文件暂存起来一并提交，从而跳过 git add 步骤。</p>
+<h4 id="配置Git-log"><a href="#配置Git-log" class="headerlink" title="配置Git log"></a><a href="https://git-scm.com/book/zh/v2/Git-%E5%9F%BA%E7%A1%80-%E6%9F%A5%E7%9C%8B%E6%8F%90%E4%BA%A4%E5%8E%86%E5%8F%B2" target="_blank" rel="noopener">配置Git log</a></h4><ul>
+<li>一个常用的选项是 -p，用来显示每次提交的内容差异。 你也可以加上 -2 来仅显示最近两次提交</li>
+<li>git log –stat 媒体提交的简略统计信息</li>
+<li>–pretty。 这个选项可以指定使用不同于默认格式的方式展示提交历史。 这个选项有一些内建的子选项供你使用。 比如用 oneline 将每个提交放在一行显示，查看的提交数很大时非常有用。 另外还有 short，full 和 fuller 可以用，展示的信息或多或少有些不同，请自己动手实践一下看看效果如何。</li>
+</ul>
+<h4 id="remote命令"><a href="#remote命令" class="headerlink" title="remote命令"></a><a href="https://git-scm.com/book/zh/v2/Git-%E5%9F%BA%E7%A1%80-%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8" target="_blank" rel="noopener">remote命令</a></h4><p>你可以通过 git ls-remote (remote) 来显式地获得远程引用的完整列表，或者通过 git remote show (remote) 获得远程分支的更多信息。 然而，一个更常见的做法是利用远程跟踪分支。</p>
+<h4 id="tag-打标签"><a href="#tag-打标签" class="headerlink" title="tag 打标签"></a>tag 打标签</h4><ul>
+<li>git tag 列出已有的标签</li>
+<li>git tag -l ‘v1.8.5*’ 查询1.8.5系列的标签</li>
+<li>创建标签<ul>
+<li>轻量标签：git tag v1.4</li>
+<li>附注标签：git tag -a v1.4 -m ‘my version 1.4’</li>
+</ul>
+</li>
+<li>后期补打标签：git tag -a v1.2 9fceb02 最后的参数是要补打标签的那个commitId</li>
+</ul>
+<h4 id="共享标签"><a href="#共享标签" class="headerlink" title="共享标签"></a>共享标签</h4><p>默认情况下，<code>git push</code> 命令并不会传送标签到远程仓库服务器上。 在创建完标签后你必须显式地推送标签到共享服务器上。 这个过程就像共享远程分支一样——你可以运行 <code>git push origin [tagname]</code>。</p>
+<p>如果想要一次性推送很多标签，也可以使用带有 –tags 选项的 git push 命令。 这将会把所有不在远程仓库服务器上的标签全部传送到那里。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push origin --tags</span><br></pre></td></tr></table></figure></p>
+<h4 id="删除标签"><a href="#删除标签" class="headerlink" title="删除标签"></a>删除标签</h4><ul>
+<li>删除本地标签 <code>git tag -d &lt;tagname&gt;</code></li>
+<li>远程标签不会随本地标签删除而删除，你需要同步<code>git push &lt;remote&gt; :refs/tags/&lt;tagname&gt;</code> 来更新你的远程仓库标签</li>
+</ul>
+<h3 id="Git分支"><a href="#Git分支" class="headerlink" title="Git分支"></a>Git分支</h3><p>Git 保存的不是文件的变化或者差异，而是一系列不同时刻的文件快照。</p>
+<p>在进行提交操作时，Git 会保存一个提交对象（commit object）。知道了 Git 保存数据的方式，我们可以很自然的想到——该提交对象会包含一个指向暂存内容快照的指针。 但不仅仅是这样，该提交对象还包含了作者的姓名和邮箱、提交时输入的信息以及指向它的父对象的指针。首次提交产生的提交对象没有父对象，普通提交操作产生的提交对象有一个父对象，而由多个分支合并产生的提交对象有多个父对象，</p>
+<p>为了更加形象地说明，我们假设现在有一个工作目录，里面包含了三个将要被暂存和提交的文件。 暂存操作会为每一个文件计算校验和（使用我们在 起步 中提到的 SHA-1 哈希算法），然后会把当前版本的文件快照保存到 Git 仓库中（Git 使用 blob 对象来保存它们），最终将校验和加入到暂存区域等待提交</p>
+<p><img src="/pb/2019/09/04/git指南/./commit-and-tree.png" alt="提交对象及树结构"></p>
+<ul>
+<li>98ca9 是一个提交（commit）对象，保存着树对象（文件变更树）的指针和所有提交信息。</li>
+<li>92ec2 是上面的树对象，记录着目录结构和文件快照</li>
+<li>右边三个是三个blob对象，保存着文件快照</li>
+</ul>
+<p>多次修改提交后，那么产生的提交对象会包含一个上次提交对象（父对象）的指针。链式结构</p>
+<p><img src="/pb/2019/09/04/git指南/./commits-and-parents.png" alt="commit记录"></p>
+<p>Git 又是怎么知道当前在哪一个分支上呢？ 也很简单，它有一个名为 HEAD 的特殊指针。 请注意它和许多其它版本控制系统（如 Subversion 或 CVS）里的 HEAD 概念完全不同。 <strong>在 Git 中，它是一个指针，指向当前所在的本地分支</strong>（将 HEAD 想象为当前分支的别名）。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 等价于下面两条命令</span></span><br><span class="line">$ git checkout -b iss53</span><br><span class="line"></span><br><span class="line">$ git branch iss53</span><br><span class="line">$ git checkout iss53</span><br></pre></td></tr></table></figure>
+<h4 id="fast-forward"><a href="#fast-forward" class="headerlink" title="fast-forward"></a>fast-forward</h4><p>你应该注意到了”快进（fast-forward）”这个词。 由于当前 master 分支所指向的提交是你当前提交（有关 hotfix 的提交）的直接上游，所以 Git 只是简单的将指针向前移动。 换句话说，当你试图合并两个分支时，如果顺着一个分支走下去能够到达另一个分支，那么 Git 在合并两者的时候，只会简单的将指针向前推进（指针右移），因为这种情况下的合并操作没有需要解决的分歧——这就叫做 “快进（fast-forward）”。</p>
+<h4 id="recursive"><a href="#recursive" class="headerlink" title="recursive"></a>recursive</h4><p><img src="/pb/2019/09/04/git指南/./basic-merging-1.png" alt="recursive"></p>
+<p>你的开发历史从一个更早的地方开始分叉开来（diverged）。 因为，master 分支所在提交并不是 iss53 分支所在提交的直接祖先，Git 不得不做一些额外的工作。 出现这种情况的时候，Git 会使用两个分支的末端所指的快照（C4 和 C5）以及这两个分支的工作祖先（C2），做一个简单的三方合并。</p>
+<p>结果如下：<br><img src="/pb/2019/09/04/git指南/./basic-merging-2.png" alt="recursive result"></p>
+<p>Git 会自行决定选取哪一个提交作为最优的共同祖先，并以此作为合并的基础；这和更加古老的 CVS 系统或者 Subversion （1.5 版本之前）不同，在这些古老的版本管理系统中，用户需要自己选择最佳的合并基础。 Git 的这个优势使其在合并操作上比其他系统要简单很多。</p>
+<h4 id="分支开发工作流"><a href="#分支开发工作流" class="headerlink" title="分支开发工作流"></a>分支开发工作流</h4><p>稳定分支的指针总是在提交历史中落后一大截，而前沿分支的指针往往比较靠前。</p>
+<p><img src="/pb/2019/09/04/git指南/./lr-branches-1.png" alt="分支工作流1"></p>
+<p><img src="/pb/2019/09/04/git指南/./lr-branches-2.png" alt="分支工作流2"></p>
+<h3 id="Git远程分支"><a href="#Git远程分支" class="headerlink" title="Git远程分支"></a><a href="https://git-scm.com/book/zh/v2/Git-%E5%88%86%E6%94%AF-%E8%BF%9C%E7%A8%8B%E5%88%86%E6%94%AF" target="_blank" rel="noopener">Git远程分支</a></h3><hr>
+<h3 id="使用技能及rebase"><a href="#使用技能及rebase" class="headerlink" title="使用技能及rebase"></a>使用技能及rebase</h3><p><a href="https://juejin.im/post/5d5b4c6951882569eb570958" target="_blank" rel="noopener">link1</a> <a href="https://git-scm.com/book/zh/v2/Git-%E5%88%86%E6%94%AF-%E5%8F%98%E5%9F%BA" target="_blank" rel="noopener">⚠️link2</a></p>
+<h4 id="rebase的用法和惊艳之处，以及在什么情况下慎用。"><a href="#rebase的用法和惊艳之处，以及在什么情况下慎用。" class="headerlink" title="rebase的用法和惊艳之处，以及在什么情况下慎用。"></a>rebase的用法和惊艳之处，以及在什么情况下慎用。</h4><p><strong>普通的merge操作</strong></p>
+<p><img src="/pb/2019/09/04/git指南/./basic-rebase-1.png" alt="merge-before"></p>
+<p><img src="/pb/2019/09/04/git指南/./basic-rebase-2.png" alt="merge-after"></p>
+<p>整合分支最容易的方法是 merge 命令。 它会把两个分支的最新快照（C3 和 C4）以及二者最近的共同祖先（C2）进行三方合并，合并的结果是生成一个新的快照（并提交）。</p>
+<p><strong>rebase怎么做合并呢</strong><br>你可以提取在 C4 中引入的补丁和修改，然后在 C3 的基础上应用一次。 在 Git 中，这种操作就叫做 变基。 </p>
+<blockquote>
+<p>你可以使用 rebase 命令将提交到某一分支上的所有修改都移至另一分支上，就好像“重新播放”一样。</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># document</span></span><br><span class="line">$ git rebase --<span class="built_in">help</span></span><br></pre></td></tr></table></figure>
+<p>原理是首先找到这两个分支（即当前分支 experiment、变基操作的目标基底分支 master）的最近共同祖先 C2，然后对比当前分支相对于该祖先的历次提交，提取相应的修改并存为临时文件，然后将当前分支指向目标基底 C3, 最后以此将之前另存为临时文件的修改依序应用。</p>
+<p><img src="/pb/2019/09/04/git指南/./basic-rebase-1.png" alt="rebase-before"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout experiment</span><br><span class="line">$ git rebase master</span><br><span class="line">First, rewinding head to replay your work on top of it...</span><br><span class="line">Applying: added staged <span class="built_in">command</span></span><br></pre></td></tr></table></figure>
+<p><img src="/pb/2019/09/04/git指南/./basic-rebase-3.png" alt="rebaseing"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout master</span><br><span class="line">$ git merge experiment</span><br></pre></td></tr></table></figure>
+<p><img src="/pb/2019/09/04/git指南/./basic-rebase-4.png" alt="rebase-after"></p>
+<p>此时，C4’ 指向的快照就和上面使用 merge 命令的例子中 C5 指向的快照一模一样了。 这两种整合方法的最终结果没有任何区别，但是变基使得提交历史更加整洁。 你在查看一个经过变基的分支的历史记录时会发现，尽管实际的开发工作是并行的，但它们看上去就像是串行的一样，提交历史是一条直线没有分叉。</p>
+<h4 id="rebase的风险"><a href="#rebase的风险" class="headerlink" title="rebase的风险"></a>rebase的风险</h4><p>关键点：<br><strong>不要对（在你仓库之外有副本的分支）进行变基（rebase）</strong></p>
+<p><code>git checkout branch xxx origin/master</code> 后面的 <code>origin/master</code> 代表我们是<strong>基于远程分支</strong> <code>origin/master</code> 进行创建的。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b test2 origin/master</span><br><span class="line">Branch <span class="string">'test2'</span> <span class="built_in">set</span> up to track remote branch <span class="string">'master'</span> from <span class="string">'origin'</span>.</span><br><span class="line">Switched to a new branch <span class="string">'test2'</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://jayechong.github.io/pb/2019/09/04/git指南/" data-id="ck06n8lxp0000s3y7ujc7vqg5" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/pb/2019/09/03/调用堆栈/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">调用堆栈</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/pb/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/pb/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/pb/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/pb/archives/2019/04/">April 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/pb/2019/09/04/git指南/">git指南</a>
+          </li>
+        
+          <li>
+            <a href="/pb/2019/09/03/调用堆栈/">调用堆栈</a>
+          </li>
+        
+          <li>
+            <a href="/pb/2019/08/12/二进制1的个数/">二进制1的个数</a>
+          </li>
+        
+          <li>
+            <a href="/pb/2019/05/20/call-apply-arguments-bind/">call,apply,arguments,bind</a>
+          </li>
+        
+          <li>
+            <a href="/pb/2019/04/28/双向绑定实现之Proxy与defineProperty/">双向绑定实现之Proxy与defineProperty</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Jaye Chong<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/pb/" class="mobile-nav-link">Home</a>
+  
+    <a href="/pb/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/pb/fancybox/jquery.fancybox.css">
+  <script src="/pb/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/pb/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

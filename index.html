@@ -66,6 +66,53 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-git指南" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/pb/2019/09/04/git指南/" class="article-date">
+  <time datetime="2019-09-04T03:29:03.000Z" itemprop="datePublished">2019-09-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/pb/2019/09/04/git指南/">git指南</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Git基础"><a href="#Git基础" class="headerlink" title="Git基础"></a>Git基础</h3><p><a href="https://git-scm.com/book/zh/v2" target="_blank" rel="noopener">gitbook</a></p>
+<p>Git 和其它版本控制系统（包括 Subversion 和近似工具）的主要差别在于 Git 对待数据的方法。</p>
+<blockquote>
+<p>概念上来区分，其它大部分系统以文件变更列表的方式存储信息。 这类系统（CVS、Subversion、Perforce、Bazaar 等等）将它们保存的信息看作是一组基本文件和每个文件随时间逐步累积的差异。反之，Git 更像是把数据看作是对小型文件系统的一组快照。 每次你提交更新，或在 Git 中保存项目状态时，它主要对当时的全部文件制作一个快照并保存这个快照的索引。 为了高效，如果文件没有修改，Git 不再重新存储该文件，而是只保留一个链接指向之前存储的文件。 Git 对待数据更像是一个<strong>快照流</strong>。</p>
+</blockquote>
+<p>Git 的分支实质上仅是包含所指对象校验和（长度为 40 的 SHA-1 值字符串）的文件，所以它的创建和销毁都异常高效。 创建一个新分支就相当于往一个文件中写入 41 个字节（40 个字符和 1 个换行符），如此的简单能不快吗？</p>
+<p>这与过去大多数版本控制系统形成了鲜明的对比，它们在创建分支时，将所有的项目文件都复制一遍，并保存到一个特定的目录。 完成这样繁琐的过程通常需要好几秒钟，有时甚至需要好几分钟。所需时间的长短，完全取决于项目的规模。而在 Git 中，任何规模的项目都能在瞬间创建新分支。 同时，由于每次提交都会记录父对象，所以寻找恰当的合并基础（译注：即共同祖先）也是同样的简单和高效。 这些高效的特性使得 Git 鼓励开发人员频繁地创建和使用分支。</p>
+        
+          <p class="article-more-link">
+            <a href="/pb/2019/09/04/git指南/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://jayechong.github.io/pb/2019/09/04/git指南/" data-id="ck06n8lxp0000s3y7ujc7vqg5" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-调用堆栈" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/pb/2019/09/03/调用堆栈/" class="article-date">
@@ -97,7 +144,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jayechong.github.io/pb/2019/09/03/调用堆栈/" data-id="ck04owjr200044ny7y4i38t0m" class="article-share-link">Share</a>
+      <a data-url="https://jayechong.github.io/pb/2019/09/03/调用堆栈/" data-id="ck06n8ly20005s3y7rgu72ssc" class="article-share-link">Share</a>
       
       
     </footer>
@@ -140,7 +187,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jayechong.github.io/pb/2019/08/12/二进制1的个数/" data-id="ck04owjqz00024ny7mp3gosnr" class="article-share-link">Share</a>
+      <a data-url="https://jayechong.github.io/pb/2019/08/12/二进制1的个数/" data-id="ck06n8lxx0003s3y7q2xq2jmn" class="article-share-link">Share</a>
       
       
     </footer>
@@ -182,7 +229,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jayechong.github.io/pb/2019/05/20/call-apply-arguments-bind/" data-id="ck04owjqs00004ny7b70b31at" class="article-share-link">Share</a>
+      <a data-url="https://jayechong.github.io/pb/2019/05/20/call-apply-arguments-bind/" data-id="ck06n8lxu0001s3y7snylxao1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -224,7 +271,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jayechong.github.io/pb/2019/04/28/双向绑定实现之Proxy与defineProperty/" data-id="ck04owjr000034ny7q0js37yq" class="article-share-link">Share</a>
+      <a data-url="https://jayechong.github.io/pb/2019/04/28/双向绑定实现之Proxy与defineProperty/" data-id="ck06n8lxy0004s3y7pg9uq5e8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -265,7 +312,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jayechong.github.io/pb/2019/04/28/hexo101/" data-id="ck04owjqx00014ny7qm1m13ny" class="article-share-link">Share</a>
+      <a data-url="https://jayechong.github.io/pb/2019/04/28/hexo101/" data-id="ck06n8lxw0002s3y732pha7bx" class="article-share-link">Share</a>
       
       
     </footer>
@@ -306,6 +353,10 @@
       <ul>
         
           <li>
+            <a href="/pb/2019/09/04/git指南/">git指南</a>
+          </li>
+        
+          <li>
             <a href="/pb/2019/09/03/调用堆栈/">调用堆栈</a>
           </li>
         
@@ -319,10 +370,6 @@
         
           <li>
             <a href="/pb/2019/04/28/双向绑定实现之Proxy与defineProperty/">双向绑定实现之Proxy与defineProperty</a>
-          </li>
-        
-          <li>
-            <a href="/pb/2019/04/28/hexo101/">Hexo101</a>
           </li>
         
       </ul>
