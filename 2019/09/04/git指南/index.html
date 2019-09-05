@@ -26,7 +26,7 @@
 <meta property="og:image" content="https://jayechong.github.io/pb/2019/09/04/git指南/basic-rebase-1.png">
 <meta property="og:image" content="https://jayechong.github.io/pb/2019/09/04/git指南/basic-rebase-3.png">
 <meta property="og:image" content="https://jayechong.github.io/pb/2019/09/04/git指南/basic-rebase-4.png">
-<meta property="og:updated_time" content="2019-09-05T02:57:49.000Z">
+<meta property="og:updated_time" content="2019-09-05T12:19:05.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git指南">
 <meta name="twitter:description" content="Git基础gitbook Git 和其它版本控制系统（包括 Subversion 和近似工具）的主要差别在于 Git 对待数据的方法。  概念上来区分，其它大部分系统以文件变更列表的方式存储信息。 这类系统（CVS、Subversion、Perforce、Bazaar 等等）将它们保存的信息看作是一组基本文件和每个文件随时间逐步累积的差异。反之，Git 更像是把数据看作是对小型文件系统的一组快照。">
@@ -200,11 +200,13 @@
 <h4 id="rebase的风险"><a href="#rebase的风险" class="headerlink" title="rebase的风险"></a>rebase的风险</h4><p>关键点：<br><strong>不要对（在你仓库之外有副本的分支）进行变基（rebase）</strong></p>
 <p><code>git checkout branch xxx origin/master</code> 后面的 <code>origin/master</code> 代表我们是<strong>基于远程分支</strong> <code>origin/master</code> 进行创建的。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b test2 origin/master</span><br><span class="line">Branch <span class="string">'test2'</span> <span class="built_in">set</span> up to track remote branch <span class="string">'master'</span> from <span class="string">'origin'</span>.</span><br><span class="line">Switched to a new branch <span class="string">'test2'</span></span><br></pre></td></tr></table></figure>
+<h4 id="Git-cherry-pick"><a href="#Git-cherry-pick" class="headerlink" title="Git cherry-pick"></a>Git cherry-pick</h4><p>我们可能会有这样一个使用场景，在分支 branch-a 需要分支 branch-b 的某次提交，这个时候我们就可以先找到 branch-b 的那次提交记录的 id，然后在 branch-a 分支进行 git cherry-pick b-commit-id 将 branch-b 分支的提交记录拿过来了<br>那如果我们只需要 branch-b 分支的某个文件呢该怎么办呢，莫慌再交你一个操作，git checkout xxx file 这个操作可以将其他分支的文件拉取到当前分支，注意这个操作是覆盖式的，也就是如果你这个分支的这个文件已将存在，那么这个操作将会覆盖你当前分支的这个文件。可以发挥一下 xxx 也可以是远程分支。<br>git checkout branch – file<br>那么这个操作又是干嘛的呢，这个操作可以将你的某个文件还原到某个分支的版本。如果某次你手误提交了错误的文件，但是改动又忘了，那么这个命令或许可以帮到你。</p>
+<p>作者：echozh<br>链接：<a href="https://juejin.im/post/5d5b4c6951882569eb570958" target="_blank" rel="noopener">https://juejin.im/post/5d5b4c6951882569eb570958</a><br>来源：掘金<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jayechong.github.io/pb/2019/09/04/git指南/" data-id="ck06n8lxp0000s3y7ujc7vqg5" class="article-share-link">Share</a>
+      <a data-url="https://jayechong.github.io/pb/2019/09/04/git指南/" data-id="ck06p9u0q0001wmy73hawe6ii" class="article-share-link">Share</a>
       
       
     </footer>
