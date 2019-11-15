@@ -7,12 +7,13 @@
   
   <title>git指南 | ZY</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Git基础gitbook Git 和其它版本控制系统（包括 Subversion 和近似工具）的主要差别在于 Git 对待数据的方法。  概念上来区分，其它大部分系统以文件变更列表的方式存储信息。 这类系统（CVS、Subversion、Perforce、Bazaar 等等）将它们保存的信息看作是一组基本文件和每个文件随时间逐步累积的差异。反之，Git 更像是把数据看作是对小型文件系统的一组快照。">
+  <meta name="description" content="Git基础gitbook Git 和其它版本控制系统（包括 Subversion 和近似工具）的主要差别在于 Git 对待数据的方法。 概念上来区分，其它大部分系统以文件变更列表的方式存储信息。 这类系统（CVS、Subversion、Perforce、Bazaar 等等）将它们保存的信息看作是一组基本文件和每个文件随时间逐步累积的差异。反之，Git 更像是把数据看作是对小型文件系统的一组快照。">
+<meta name="keywords" content="技能,git">
 <meta property="og:type" content="article">
 <meta property="og:title" content="git指南">
 <meta property="og:url" content="https://jayechong.github.io/pb/2019/09/04/git指南/index.html">
 <meta property="og:site_name" content="ZY">
-<meta property="og:description" content="Git基础gitbook Git 和其它版本控制系统（包括 Subversion 和近似工具）的主要差别在于 Git 对待数据的方法。  概念上来区分，其它大部分系统以文件变更列表的方式存储信息。 这类系统（CVS、Subversion、Perforce、Bazaar 等等）将它们保存的信息看作是一组基本文件和每个文件随时间逐步累积的差异。反之，Git 更像是把数据看作是对小型文件系统的一组快照。">
+<meta property="og:description" content="Git基础gitbook Git 和其它版本控制系统（包括 Subversion 和近似工具）的主要差别在于 Git 对待数据的方法。 概念上来区分，其它大部分系统以文件变更列表的方式存储信息。 这类系统（CVS、Subversion、Perforce、Bazaar 等等）将它们保存的信息看作是一组基本文件和每个文件随时间逐步累积的差异。反之，Git 更像是把数据看作是对小型文件系统的一组快照。">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://jayechong.github.io/pb/2019/09/04/git指南/areas.png">
 <meta property="og:image" content="https://jayechong.github.io/pb/2019/09/04/git指南/commit-and-tree.png">
@@ -26,10 +27,10 @@
 <meta property="og:image" content="https://jayechong.github.io/pb/2019/09/04/git指南/basic-rebase-1.png">
 <meta property="og:image" content="https://jayechong.github.io/pb/2019/09/04/git指南/basic-rebase-3.png">
 <meta property="og:image" content="https://jayechong.github.io/pb/2019/09/04/git指南/basic-rebase-4.png">
-<meta property="og:updated_time" content="2019-09-05T12:19:05.000Z">
+<meta property="og:updated_time" content="2019-11-04T09:20:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git指南">
-<meta name="twitter:description" content="Git基础gitbook Git 和其它版本控制系统（包括 Subversion 和近似工具）的主要差别在于 Git 对待数据的方法。  概念上来区分，其它大部分系统以文件变更列表的方式存储信息。 这类系统（CVS、Subversion、Perforce、Bazaar 等等）将它们保存的信息看作是一组基本文件和每个文件随时间逐步累积的差异。反之，Git 更像是把数据看作是对小型文件系统的一组快照。">
+<meta name="twitter:description" content="Git基础gitbook Git 和其它版本控制系统（包括 Subversion 和近似工具）的主要差别在于 Git 对待数据的方法。 概念上来区分，其它大部分系统以文件变更列表的方式存储信息。 这类系统（CVS、Subversion、Perforce、Bazaar 等等）将它们保存的信息看作是一组基本文件和每个文件随时间逐步累积的差异。反之，Git 更像是把数据看作是对小型文件系统的一组快照。">
 <meta name="twitter:image" content="https://jayechong.github.io/pb/2019/09/04/git指南/areas.png">
   
     <link rel="alternate" href="/pb/atom.xml" title="ZY" type="application/atom+xml">
@@ -105,9 +106,7 @@
       
         <h3 id="Git基础"><a href="#Git基础" class="headerlink" title="Git基础"></a>Git基础</h3><p><a href="https://git-scm.com/book/zh/v2" target="_blank" rel="noopener">gitbook</a></p>
 <p>Git 和其它版本控制系统（包括 Subversion 和近似工具）的主要差别在于 Git 对待数据的方法。</p>
-<blockquote>
 <p>概念上来区分，其它大部分系统以文件变更列表的方式存储信息。 这类系统（CVS、Subversion、Perforce、Bazaar 等等）将它们保存的信息看作是一组基本文件和每个文件随时间逐步累积的差异。反之，Git 更像是把数据看作是对小型文件系统的一组快照。 每次你提交更新，或在 Git 中保存项目状态时，它主要对当时的全部文件制作一个快照并保存这个快照的索引。 为了高效，如果文件没有修改，Git 不再重新存储该文件，而是只保留一个链接指向之前存储的文件。 Git 对待数据更像是一个<strong>快照流</strong>。</p>
-</blockquote>
 <p>Git 的分支实质上仅是包含所指对象校验和（长度为 40 的 SHA-1 值字符串）的文件，所以它的创建和销毁都异常高效。 创建一个新分支就相当于往一个文件中写入 41 个字节（40 个字符和 1 个换行符），如此的简单能不快吗？</p>
 <p>这与过去大多数版本控制系统形成了鲜明的对比，它们在创建分支时，将所有的项目文件都复制一遍，并保存到一个特定的目录。 完成这样繁琐的过程通常需要好几秒钟，有时甚至需要好几分钟。所需时间的长短，完全取决于项目的规模。而在 Git 中，任何规模的项目都能在瞬间创建新分支。 同时，由于每次提交都会记录父对象，所以寻找恰当的合并基础（译注：即共同祖先）也是同样的简单和高效。 这些高效的特性使得 Git 鼓励开发人员频繁地创建和使用分支。</p>
 <a id="more"></a>
@@ -120,9 +119,9 @@
 </ul>
 <h4 id="Git配置"><a href="#Git配置" class="headerlink" title="Git配置"></a>Git配置</h4><p>Git 自带一个 git config 的工具来帮助设置控制 Git 外观和行为的配置变量。 这些变量存储在三个不同的位置：</p>
 <ol>
-<li><p>/etc/gitconfig 文件: 包含系统上每一个用户及他们仓库的通用配置。 如果使用带有 –system 选项的 git config 时，它会从此文件读写配置变量。</p>
+<li><p>/etc/gitconfig 文件: 包含系统上每一个用户及他们仓库的通用配置。 如果使用带有 —system 选项的 git config 时，它会从此文件读写配置变量。</p>
 </li>
-<li><p>~/.gitconfig 或 ~/.config/git/config 文件：只针对当前用户。 可以传递 –global 选项让 Git 读写此文件。</p>
+<li><p>~/.gitconfig 或 ~/.config/git/config 文件：只针对当前用户。 可以传递 —global 选项让 Git 读写此文件。</p>
 </li>
 <li><p>当前使用仓库的 Git 目录中的 config 文件（就是 .git/config）：针对该仓库。</p>
 </li>
@@ -130,7 +129,7 @@
 <p>每一个级别覆盖上一级别的配置，所以 .git/config 的配置变量会覆盖 /etc/gitconfig 中的配置变量。</p>
 <p>当安装完 Git 应该做的第一件事就是设置你的用户名称与邮件地址。 这样做很重要，因为每一个 Git 的提交都会使用这些信息，并且它会写入到你的每一次提交中，不可更改：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name <span class="string">"John Doe"</span></span><br><span class="line">$ git config --global user.email johndoe@example.com</span><br></pre></td></tr></table></figure>
-<p>检查配置信息<br>如果想要检查你的配置，可以使用 git config –list 命令来列出所有 Git 当时能找到的配置。</p>
+<p>检查配置信息<br>如果想要检查你的配置，可以使用 git config —list 命令来列出所有 Git 当时能找到的配置。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ git config --list</span><br><span class="line">user.name=John Doe</span><br><span class="line">user.email=johndoe@example.com</span><br><span class="line">color.status=auto</span><br><span class="line">color.branch=auto</span><br><span class="line">color.interactive=auto</span><br><span class="line">color.diff=auto</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
 <p>你可能会看到重复的变量名，因为 Git 会从不同的文件中读取同一个配置（例如：/etc/gitconfig 与 ~/.gitconfig）。 这种情况下，Git 会使用它找到的每一个变量的最后一个配置。</p>
 <p>你可以通过输入 <code>git config &lt;key&gt;</code>： 来检查 Git 的某一项配置</p>
@@ -138,8 +137,8 @@
 <h4 id="跳过使用暂存区域"><a href="#跳过使用暂存区域" class="headerlink" title="跳过使用暂存区域"></a>跳过使用暂存区域</h4><p> Git 提供了一个跳过使用暂存区域的方式， 只要在提交的时候，给 git commit 加上 -a 选项，Git 就会自动把所有已经跟踪过的文件暂存起来一并提交，从而跳过 git add 步骤。</p>
 <h4 id="配置Git-log"><a href="#配置Git-log" class="headerlink" title="配置Git log"></a><a href="https://git-scm.com/book/zh/v2/Git-%E5%9F%BA%E7%A1%80-%E6%9F%A5%E7%9C%8B%E6%8F%90%E4%BA%A4%E5%8E%86%E5%8F%B2" target="_blank" rel="noopener">配置Git log</a></h4><ul>
 <li>一个常用的选项是 -p，用来显示每次提交的内容差异。 你也可以加上 -2 来仅显示最近两次提交</li>
-<li>git log –stat 媒体提交的简略统计信息</li>
-<li>–pretty。 这个选项可以指定使用不同于默认格式的方式展示提交历史。 这个选项有一些内建的子选项供你使用。 比如用 oneline 将每个提交放在一行显示，查看的提交数很大时非常有用。 另外还有 short，full 和 fuller 可以用，展示的信息或多或少有些不同，请自己动手实践一下看看效果如何。</li>
+<li>git log —stat 媒体提交的简略统计信息</li>
+<li>—pretty。 这个选项可以指定使用不同于默认格式的方式展示提交历史。 这个选项有一些内建的子选项供你使用。 比如用 oneline 将每个提交放在一行显示，查看的提交数很大时非常有用。 另外还有 short，full 和 fuller 可以用，展示的信息或多或少有些不同，请自己动手实践一下看看效果如何。</li>
 </ul>
 <h4 id="remote命令"><a href="#remote命令" class="headerlink" title="remote命令"></a><a href="https://git-scm.com/book/zh/v2/Git-%E5%9F%BA%E7%A1%80-%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8" target="_blank" rel="noopener">remote命令</a></h4><p>你可以通过 git ls-remote (remote) 来显式地获得远程引用的完整列表，或者通过 git remote show (remote) 获得远程分支的更多信息。 然而，一个更常见的做法是利用远程跟踪分支。</p>
 <h4 id="tag-打标签"><a href="#tag-打标签" class="headerlink" title="tag 打标签"></a>tag 打标签</h4><ul>
@@ -153,7 +152,7 @@
 <li>后期补打标签：git tag -a v1.2 9fceb02 最后的参数是要补打标签的那个commitId</li>
 </ul>
 <h4 id="共享标签"><a href="#共享标签" class="headerlink" title="共享标签"></a>共享标签</h4><p>默认情况下，<code>git push</code> 命令并不会传送标签到远程仓库服务器上。 在创建完标签后你必须显式地推送标签到共享服务器上。 这个过程就像共享远程分支一样——你可以运行 <code>git push origin [tagname]</code>。</p>
-<p>如果想要一次性推送很多标签，也可以使用带有 –tags 选项的 git push 命令。 这将会把所有不在远程仓库服务器上的标签全部传送到那里。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push origin --tags</span><br></pre></td></tr></table></figure></p>
+<p>如果想要一次性推送很多标签，也可以使用带有 —tags 选项的 git push 命令。 这将会把所有不在远程仓库服务器上的标签全部传送到那里。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push origin --tags</span><br></pre></td></tr></table></figure></p>
 <h4 id="删除标签"><a href="#删除标签" class="headerlink" title="删除标签"></a>删除标签</h4><ul>
 <li>删除本地标签 <code>git tag -d &lt;tagname&gt;</code></li>
 <li>远程标签不会随本地标签删除而删除，你需要同步<code>git push &lt;remote&gt; :refs/tags/&lt;tagname&gt;</code> 来更新你的远程仓库标签</li>
@@ -180,7 +179,7 @@
 <p><img src="/pb/2019/09/04/git指南/./lr-branches-1.png" alt="分支工作流1"></p>
 <p><img src="/pb/2019/09/04/git指南/./lr-branches-2.png" alt="分支工作流2"></p>
 <h3 id="Git远程分支"><a href="#Git远程分支" class="headerlink" title="Git远程分支"></a><a href="https://git-scm.com/book/zh/v2/Git-%E5%88%86%E6%94%AF-%E8%BF%9C%E7%A8%8B%E5%88%86%E6%94%AF" target="_blank" rel="noopener">Git远程分支</a></h3><hr>
-<h3 id="使用技能及rebase"><a href="#使用技能及rebase" class="headerlink" title="使用技能及rebase"></a>使用技能及rebase</h3><p><a href="https://juejin.im/post/5d5b4c6951882569eb570958" target="_blank" rel="noopener">link1</a> <a href="https://git-scm.com/book/zh/v2/Git-%E5%88%86%E6%94%AF-%E5%8F%98%E5%9F%BA" target="_blank" rel="noopener">⚠️link2</a></p>
+<h3 id="实用技能及rebase"><a href="#实用技能及rebase" class="headerlink" title="实用技能及rebase"></a>实用技能及rebase</h3><p><a href="https://juejin.im/post/5d5b4c6951882569eb570958" target="_blank" rel="noopener">link1</a> <a href="https://git-scm.com/book/zh/v2/Git-%E5%88%86%E6%94%AF-%E5%8F%98%E5%9F%BA" target="_blank" rel="noopener">⚠️link2</a></p>
 <h4 id="rebase的用法和惊艳之处，以及在什么情况下慎用。"><a href="#rebase的用法和惊艳之处，以及在什么情况下慎用。" class="headerlink" title="rebase的用法和惊艳之处，以及在什么情况下慎用。"></a>rebase的用法和惊艳之处，以及在什么情况下慎用。</h4><p><strong>普通的merge操作</strong></p>
 <p><img src="/pb/2019/09/04/git指南/./basic-rebase-1.png" alt="merge-before"></p>
 <p><img src="/pb/2019/09/04/git指南/./basic-rebase-2.png" alt="merge-after"></p>
@@ -200,20 +199,32 @@
 <h4 id="rebase的风险"><a href="#rebase的风险" class="headerlink" title="rebase的风险"></a>rebase的风险</h4><p>关键点：<br><strong>不要对（在你仓库之外有副本的分支）进行变基（rebase）</strong></p>
 <p><code>git checkout branch xxx origin/master</code> 后面的 <code>origin/master</code> 代表我们是<strong>基于远程分支</strong> <code>origin/master</code> 进行创建的。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b test2 origin/master</span><br><span class="line">Branch <span class="string">'test2'</span> <span class="built_in">set</span> up to track remote branch <span class="string">'master'</span> from <span class="string">'origin'</span>.</span><br><span class="line">Switched to a new branch <span class="string">'test2'</span></span><br></pre></td></tr></table></figure>
-<h4 id="Git-cherry-pick"><a href="#Git-cherry-pick" class="headerlink" title="Git cherry-pick"></a>Git cherry-pick</h4><p>我们可能会有这样一个使用场景，在分支 branch-a 需要分支 branch-b 的某次提交，这个时候我们就可以先找到 branch-b 的那次提交记录的 id，然后在 branch-a 分支进行 git cherry-pick b-commit-id 将 branch-b 分支的提交记录拿过来了<br>那如果我们只需要 branch-b 分支的某个文件呢该怎么办呢，莫慌再交你一个操作，git checkout xxx file 这个操作可以将其他分支的文件拉取到当前分支，注意这个操作是覆盖式的，也就是如果你这个分支的这个文件已将存在，那么这个操作将会覆盖你当前分支的这个文件。可以发挥一下 xxx 也可以是远程分支。<br>git checkout branch – file<br>那么这个操作又是干嘛的呢，这个操作可以将你的某个文件还原到某个分支的版本。如果某次你手误提交了错误的文件，但是改动又忘了，那么这个命令或许可以帮到你。</p>
-<p>作者：echozh<br>链接：<a href="https://juejin.im/post/5d5b4c6951882569eb570958" target="_blank" rel="noopener">https://juejin.im/post/5d5b4c6951882569eb570958</a><br>来源：掘金<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+<h4 id="Git-cherry-pick"><a href="#Git-cherry-pick" class="headerlink" title="Git cherry-pick"></a>Git cherry-pick</h4><p>我们可能会有这样一个使用场景，在分支 branch-a 需要分支 branch-b 的某次提交，这个时候我们就可以先找到 branch-b 的那次提交记录的 id，然后在 branch-a 分支进行 git cherry-pick b-commit-id 将 branch-b 分支的提交记录拿过来了<br>那如果我们只需要 branch-b 分支的某个文件呢该怎么办呢，莫慌再交你一个操作，git checkout xxx file 这个操作可以将其他分支的文件拉取到当前分支，注意这个操作是覆盖式的，也就是如果你这个分支的这个文件已将存在，那么这个操作将会覆盖你当前分支的这个文件。可以发挥一下 xxx 也可以是远程分支。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout branch -- file</span><br></pre></td></tr></table></figure>
+<p>那么这个操作又是干嘛的呢，这个操作可以将你的某个文件还原到某个分支的版本。如果某次你手误提交了错误的文件，但是改动又忘了，那么这个命令或许可以帮到你。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jayechong.github.io/pb/2019/09/04/git指南/" data-id="ck06p9u0q0001wmy73hawe6ii" class="article-share-link">Share</a>
+      <a data-url="https://jayechong.github.io/pb/2019/09/04/git指南/" data-id="ck2zymoop000187y75xd0vr0g" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/pb/tags/git/">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/pb/tags/技能/">技能</a></li></ul>
+
     </footer>
   </div>
   
     
 <nav id="article-nav">
+  
+    <a href="/pb/2019/09/06/常用数学知识归纳/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          常用数学知识归纳
+        
+      </div>
+    </a>
   
   
     <a href="/pb/2019/09/03/调用堆栈/" id="article-nav-older" class="article-nav-link-wrap">
@@ -234,15 +245,29 @@
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/pb/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/pb/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/pb/tags/snippets/">snippets</a></li><li class="tag-list-item"><a class="tag-list-link" href="/pb/tags/后端/">后端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/pb/tags/技能/">技能</a></li><li class="tag-list-item"><a class="tag-list-link" href="/pb/tags/收集/">收集</a></li><li class="tag-list-item"><a class="tag-list-link" href="/pb/tags/数学/">数学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/pb/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/pb/tags/算法/">算法</a></li></ul>
+    </div>
+  </div>
+
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/pb/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/pb/tags/git/" style="font-size: 10px;">git</a> <a href="/pb/tags/snippets/" style="font-size: 10px;">snippets</a> <a href="/pb/tags/后端/" style="font-size: 10px;">后端</a> <a href="/pb/tags/技能/" style="font-size: 10px;">技能</a> <a href="/pb/tags/收集/" style="font-size: 10px;">收集</a> <a href="/pb/tags/数学/" style="font-size: 10px;">数学</a> <a href="/pb/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/pb/tags/算法/" style="font-size: 15px;">算法</a>
+    </div>
+  </div>
+
   
     
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/pb/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/pb/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/pb/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/pb/archives/2019/04/">April 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/pb/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/pb/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/pb/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/pb/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/pb/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/pb/archives/2019/04/">April 2019</a></li></ul>
     </div>
   </div>
 
@@ -255,23 +280,23 @@
       <ul>
         
           <li>
-            <a href="/pb/2019/09/04/git指南/">git指南</a>
+            <a href="/pb/2019/11/15/动态规划/">动态规划</a>
           </li>
         
           <li>
-            <a href="/pb/2019/09/03/调用堆栈/">调用堆栈</a>
+            <a href="/pb/2019/11/14/svelte介绍/">svelte介绍</a>
           </li>
         
           <li>
-            <a href="/pb/2019/08/12/二进制1的个数/">二进制1的个数</a>
+            <a href="/pb/2019/11/12/snippets/">snippets</a>
           </li>
         
           <li>
-            <a href="/pb/2019/05/20/call-apply-arguments-bind/">call,apply,arguments,bind</a>
+            <a href="/pb/2019/11/04/生产者/">生产者</a>
           </li>
         
           <li>
-            <a href="/pb/2019/04/28/双向绑定实现之Proxy与defineProperty/">双向绑定实现之Proxy与defineProperty</a>
+            <a href="/pb/2019/10/31/数据库主从问题/">数据库主从问题</a>
           </li>
         
       </ul>
@@ -313,5 +338,20 @@
 
 
   </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 </html>

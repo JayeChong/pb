@@ -5,15 +5,20 @@
   
 
   
-  <title>ZY</title>
+  <title>snippets | ZY</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="ZY">
-<meta property="og:url" content="https://jayechong.github.io/pb/index.html">
+  <meta name="description" content="debounce123456789101112131415export function debounce (fn, delay) &amp;#123;    let timer = null;    return function () &amp;#123;      if (timer) &amp;#123;        clearTimeout(timer);        timer = null;">
+<meta name="keywords" content="snippets">
+<meta property="og:type" content="article">
+<meta property="og:title" content="snippets">
+<meta property="og:url" content="https://jayechong.github.io/pb/2019/11/12/snippets/index.html">
 <meta property="og:site_name" content="ZY">
+<meta property="og:description" content="debounce123456789101112131415export function debounce (fn, delay) &amp;#123;    let timer = null;    return function () &amp;#123;      if (timer) &amp;#123;        clearTimeout(timer);        timer = null;">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-11-12T03:50:36.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ZY">
+<meta name="twitter:title" content="snippets">
+<meta name="twitter:description" content="debounce123456789101112131415export function debounce (fn, delay) &amp;#123;    let timer = null;    return function () &amp;#123;      if (timer) &amp;#123;        clearTimeout(timer);        timer = null;">
   
     <link rel="alternate" href="/pb/atom.xml" title="ZY" type="application/atom+xml">
   
@@ -64,97 +69,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-动态规划" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/pb/2019/11/15/动态规划/" class="article-date">
-  <time datetime="2019-11-15T09:37:04.000Z" itemprop="datePublished">2019-11-15</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/pb/2019/11/15/动态规划/">动态规划</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>You are climbing a stair case. It takes n steps to reach to the top.</p>
-<p>Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?</p>
-<p>上楼梯、斐波那契数列、泰波那契序列问题。</p>
-<p>常规解法<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span> (<span class="params">n</span>) </span>&#123;<span class="keyword">if</span> (n&lt;=<span class="number">2</span>) &#123;<span class="keyword">return</span> n;&#125; <span class="keyword">return</span> f(n<span class="number">-1</span>)+f(n<span class="number">-2</span>);&#125;</span><br></pre></td></tr></table></figure></p>
-<p>闭包，memory cache<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> gen = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">	<span class="keyword">let</span> memory = [];</span><br><span class="line">	<span class="keyword">return</span> <span class="function"><span class="keyword">function</span> <span class="title">fib</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (n &lt;= <span class="number">1</span>) &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="number">1</span>;	</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (memory[n] &gt; <span class="number">0</span>) &#123;</span><br><span class="line">			<span class="keyword">return</span> memory[n];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">let</span> num = fib(n<span class="number">-1</span>) + fib(n<span class="number">-2</span>);</span><br><span class="line">		memory[n] = num;</span><br><span class="line">		<span class="keyword">return</span> num;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>深度优先搜索<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fff = <span class="function">(<span class="params">n</span>) =&gt;</span> &#123;</span><br><span class="line">	<span class="keyword">let</span> memory = [<span class="number">0</span>];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">		<span class="keyword">if</span> (i &lt;= <span class="number">2</span>) &#123;</span><br><span class="line">			memory[i] = i;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			memory[i] = memory[i<span class="number">-1</span>] + memory[i<span class="number">-2</span>];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> memory[n];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://jayechong.github.io/pb/2019/11/15/动态规划/" data-id="ck2zymop2000a87y778ewexl8" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/pb/tags/算法/">算法</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-svelte介绍" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/pb/2019/11/14/svelte介绍/" class="article-date">
-  <time datetime="2019-11-14T06:11:02.000Z" itemprop="datePublished">2019-11-14</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/pb/2019/11/14/svelte介绍/">svelte介绍</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="https://svelte.dev/blog/virtual-dom-is-pure-overhead" target="_blank" rel="noopener">virtual-dom-is-pure-overhead</a></p>
-<p>Unlike traditional UI frameworks, Svelte is a compiler that knows at build time how things could change in your app, rather than waiting to do the work at run time.</p>
-<p>The danger of defaulting to doing unnecessary work, even if that work is trivial, is that your app will eventually succumb to ‘death by a thousand cuts’ with no clear bottleneck to aim at once it’s time to optimise.</p>
-<p>Svelte is explicitly designed to prevent you from ending up in that situation.</p>
-<h4 id="Why-do-frameworks-use-the-virtual-DOM-then"><a href="#Why-do-frameworks-use-the-virtual-DOM-then" class="headerlink" title="Why do frameworks use the virtual DOM then?"></a>Why do frameworks use the virtual DOM then?</h4><p>It’s important to understand that virtual DOM isn’t a feature. It’s a means to an end, the end being declarative, state-driven UI development. Virtual DOM is valuable because it allows you to build apps without thinking about state transitions, with performance that is generally good enough. That means less buggy code, and more time spent on creative tasks instead of tedious ones.</p>
-<p>But it turns out that we can achieve a similar programming model without using virtual DOM — and that’s where Svelte comes in.<br>但是事实证明，我们无需使用虚拟DOM就可以实现类似的编程模型-这就是Svelte的用武之地。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://jayechong.github.io/pb/2019/11/14/svelte介绍/" data-id="ck2zymooz000587y7ojyx8q85" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/pb/tags/JavaScript/">JavaScript</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-snippets" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-snippets" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/pb/2019/11/12/snippets/" class="article-date">
   <time datetime="2019-11-12T03:38:26.000Z" itemprop="datePublished">2019-11-12</time>
@@ -167,8 +82,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/pb/2019/11/12/snippets/">snippets</a>
+    <h1 class="article-title" itemprop="name">
+      snippets
     </h1>
   
 
@@ -192,332 +107,28 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-生产者" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/pb/2019/11/04/生产者/" class="article-date">
-  <time datetime="2019-11-04T08:32:13.000Z" itemprop="datePublished">2019-11-04</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+    <a href="/pb/2019/11/14/svelte介绍/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
         
+          svelte介绍
+        
+      </div>
+    </a>
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/pb/2019/11/04/生产者/">生产者</a>
-    </h1>
   
+    <a href="/pb/2019/11/04/生产者/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">生产者</div>
+    </a>
+  
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>TODO List:</p>
-<ol>
-<li><a href="http://niexiaotao.cn/2019/07/06/%E6%B7%B1%E5%85%A5Vue%E6%BA%90%E4%BB%A3%E7%A0%81%E8%A7%A3%E5%86%B3%E6%97%B6%E5%BA%8F%E9%97%AE%E9%A2%98%E4%B8%80/" target="_blank" rel="noopener">Vue:在iOS中如果created生命周期中设置的data可能会导致页面一直loading或白屏</a></li>
-<li><a href="https://juejin.im/post/5aa8a07cf265da238a3022a4" target="_blank" rel="noopener">https://juejin.im/post/5aa8a07cf265da238a3022a4</a></li>
-<li><a href="https://juejin.im/post/5d772cb4e51d453b5f1a0502" target="_blank" rel="noopener">https://juejin.im/post/5d772cb4e51d453b5f1a0502</a></li>
-<li><a href="https://juejin.im/post/5dbfc266e51d456e640369cc" target="_blank" rel="noopener">https://juejin.im/post/5dbfc266e51d456e640369cc</a></li>
-<li><code>Object.assign</code>浅复制 （<a href="https://juejin.im/post/5dbebbfa51882524c507fddb#heading-56）" target="_blank" rel="noopener">https://juejin.im/post/5dbebbfa51882524c507fddb#heading-56）</a></li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://jayechong.github.io/pb/2019/11/04/生产者/" data-id="ck2zymop9000k87y7d04ikim3" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/pb/tags/收集/">收集</a></li></ul>
-
-    </footer>
-  </div>
   
 </article>
-
-
-  
-    <article id="post-数据库主从问题" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/pb/2019/10/31/数据库主从问题/" class="article-date">
-  <time datetime="2019-10-31T03:27:42.000Z" itemprop="datePublished">2019-10-31</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/pb/2019/10/31/数据库主从问题/">数据库主从问题</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="https://blog.csdn.net/xmh594603296/article/details/82461222" target="_blank" rel="noopener">参考链接</a></p>
-<h3 id="为什么主从"><a href="#为什么主从" class="headerlink" title="为什么主从"></a>为什么主从</h3><ul>
-<li><p>Master负责写操作的负载，也就是说一切写的操作都在Master上进行，而读的操作则分摊到Slave上进行。这样一来的可以大大提高读取的效率。</p>
-</li>
-<li><p>在一般的互联网应用中，经过一些数据调查得出结论，读/写的比例大概在 10：1左右 ，也就是说大量的数据操作是集中在读的操作，这也就是为什么我们会有多个Slave的原因。</p>
-</li>
-</ul>
-<h3 id="为什么分离"><a href="#为什么分离" class="headerlink" title="为什么分离"></a>为什么分离</h3><ul>
-<li>因为写操作涉及到锁的问题，不管是行锁还是表锁还是块锁，都是比较降低系统执行效率的事情。我们这样的分离是把写操作集中在一个节点上，而读操作其其他的N个节点上进行，从另一个方面有效的提高了读的效率，保证了系统的高可用性。</li>
-</ul>
-<h2 id="问题？"><a href="#问题？" class="headerlink" title="问题？"></a>问题？</h2><p>数据库集群,读写分离现在可以说是项目必备的了，但是我们如何保证其每个数据库的数据一致性</p>
-        
-          <p class="article-more-link">
-            <a href="/pb/2019/10/31/数据库主从问题/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://jayechong.github.io/pb/2019/10/31/数据库主从问题/" data-id="ck2zymop8000h87y747wb0i02" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/pb/tags/后端/">后端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/pb/tags/数据库/">数据库</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-傅里叶变换" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/pb/2019/09/11/傅里叶变换/" class="article-date">
-  <time datetime="2019-09-11T06:45:46.000Z" itemprop="datePublished">2019-09-11</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/pb/2019/09/11/傅里叶变换/">傅里叶变换</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="https://zhuanlan.zhihu.com/p/19763358" target="_blank" rel="noopener">链接</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://jayechong.github.io/pb/2019/09/11/傅里叶变换/" data-id="ck2zymop4000c87y7s7vjcrca" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/pb/tags/算法/">算法</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-常用数学知识归纳" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/pb/2019/09/06/常用数学知识归纳/" class="article-date">
-  <time datetime="2019-09-06T03:42:44.000Z" itemprop="datePublished">2019-09-06</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/pb/2019/09/06/常用数学知识归纳/">常用数学知识归纳</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="https://www.cnblogs.com/1024th/p/10623541.html" target="_blank" rel="noopener">链接</a></p>
-        
-          <p class="article-more-link">
-            <a href="/pb/2019/09/06/常用数学知识归纳/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://jayechong.github.io/pb/2019/09/06/常用数学知识归纳/" data-id="ck2zymop6000f87y7ljwkmjxp" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/pb/tags/数学/">数学</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-git指南" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/pb/2019/09/04/git指南/" class="article-date">
-  <time datetime="2019-09-04T03:29:03.000Z" itemprop="datePublished">2019-09-04</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/pb/2019/09/04/git指南/">git指南</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="Git基础"><a href="#Git基础" class="headerlink" title="Git基础"></a>Git基础</h3><p><a href="https://git-scm.com/book/zh/v2" target="_blank" rel="noopener">gitbook</a></p>
-<p>Git 和其它版本控制系统（包括 Subversion 和近似工具）的主要差别在于 Git 对待数据的方法。</p>
-<p>概念上来区分，其它大部分系统以文件变更列表的方式存储信息。 这类系统（CVS、Subversion、Perforce、Bazaar 等等）将它们保存的信息看作是一组基本文件和每个文件随时间逐步累积的差异。反之，Git 更像是把数据看作是对小型文件系统的一组快照。 每次你提交更新，或在 Git 中保存项目状态时，它主要对当时的全部文件制作一个快照并保存这个快照的索引。 为了高效，如果文件没有修改，Git 不再重新存储该文件，而是只保留一个链接指向之前存储的文件。 Git 对待数据更像是一个<strong>快照流</strong>。</p>
-<p>Git 的分支实质上仅是包含所指对象校验和（长度为 40 的 SHA-1 值字符串）的文件，所以它的创建和销毁都异常高效。 创建一个新分支就相当于往一个文件中写入 41 个字节（40 个字符和 1 个换行符），如此的简单能不快吗？</p>
-<p>这与过去大多数版本控制系统形成了鲜明的对比，它们在创建分支时，将所有的项目文件都复制一遍，并保存到一个特定的目录。 完成这样繁琐的过程通常需要好几秒钟，有时甚至需要好几分钟。所需时间的长短，完全取决于项目的规模。而在 Git 中，任何规模的项目都能在瞬间创建新分支。 同时，由于每次提交都会记录父对象，所以寻找恰当的合并基础（译注：即共同祖先）也是同样的简单和高效。 这些高效的特性使得 Git 鼓励开发人员频繁地创建和使用分支。</p>
-        
-          <p class="article-more-link">
-            <a href="/pb/2019/09/04/git指南/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://jayechong.github.io/pb/2019/09/04/git指南/" data-id="ck2zymoop000187y75xd0vr0g" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/pb/tags/git/">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/pb/tags/技能/">技能</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-调用堆栈" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/pb/2019/09/03/调用堆栈/" class="article-date">
-  <time datetime="2019-09-03T07:45:03.000Z" itemprop="datePublished">2019-09-03</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/pb/2019/09/03/调用堆栈/">调用堆栈</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="执行上下文的类型"><a href="#执行上下文的类型" class="headerlink" title="执行上下文的类型"></a>执行上下文的类型</h3><ul>
-<li><strong>全局执行上下文</strong>：只有一个，浏览器中的全局对象是window对象，node里面是global。</li>
-<li><strong>函数执行上下文</strong>：多个，只有在函数被调用的时候才会被创建，每次调用函数都会创建一个新的执行上下文。</li>
-<li><strong>Eval函数执行上下文</strong>：指运行在eval函数中的代码，很少用且不建议使用。</li>
-</ul>
-<h3 id="执行栈"><a href="#执行栈" class="headerlink" title="执行栈"></a>执行栈</h3>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://jayechong.github.io/pb/2019/09/03/调用堆栈/" data-id="ck2zymopb000m87y7826t3evi" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/pb/tags/JavaScript/">JavaScript</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-二进制1的个数" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/pb/2019/08/12/二进制1的个数/" class="article-date">
-  <time datetime="2019-08-12T09:34:15.000Z" itemprop="datePublished">2019-08-12</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/pb/2019/08/12/二进制1的个数/">二进制1的个数</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>最简单的方式</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> n = <span class="function"><span class="params">num</span> =&gt;</span> num.toString(<span class="number">2</span>).replace(<span class="regexp">/0/g</span>, <span class="string">''</span>).length</span><br></pre></td></tr></table></figure>
-<p>就只有这样？</p>
-        
-          <p class="article-more-link">
-            <a href="/pb/2019/08/12/二进制1的个数/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://jayechong.github.io/pb/2019/08/12/二进制1的个数/" data-id="ck2zymop1000887y7mu12glgz" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/pb/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/pb/tags/算法/">算法</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
-
-  <nav id="page-nav">
-    
-    <span class="page-number current">1</span><a class="page-number" href="/pb/page/2/">2</a><a class="extend next" rel="next" href="/pb/page/2/">Next &raquo;</a>
-  </nav>
 
 </section>
         

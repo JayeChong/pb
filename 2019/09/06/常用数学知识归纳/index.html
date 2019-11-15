@@ -5,19 +5,20 @@
   
 
   
-  <title>Hexo101 | ZY</title>
+  <title>常用数学知识归纳 | ZY</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="使用Hexo和GitHub一分钟快速搭建属于自己的个人学习网站">
+  <meta name="description" content="链接">
+<meta name="keywords" content="数学">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo101">
-<meta property="og:url" content="https://jayechong.github.io/pb/2019/04/28/hexo101/index.html">
+<meta property="og:title" content="常用数学知识归纳">
+<meta property="og:url" content="https://jayechong.github.io/pb/2019/09/06/常用数学知识归纳/index.html">
 <meta property="og:site_name" content="ZY">
-<meta property="og:description" content="使用Hexo和GitHub一分钟快速搭建属于自己的个人学习网站">
+<meta property="og:description" content="链接">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-29T09:00:17.000Z">
+<meta property="og:updated_time" content="2019-11-04T09:19:24.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo101">
-<meta name="twitter:description" content="使用Hexo和GitHub一分钟快速搭建属于自己的个人学习网站">
+<meta name="twitter:title" content="常用数学知识归纳">
+<meta name="twitter:description" content="链接">
   
     <link rel="alternate" href="/pb/atom.xml" title="ZY" type="application/atom+xml">
   
@@ -68,10 +69,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-hexo101" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-常用数学知识归纳" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/pb/2019/04/28/hexo101/" class="article-date">
-  <time datetime="2019-04-28T07:29:56.000Z" itemprop="datePublished">2019-04-28</time>
+    <a href="/pb/2019/09/06/常用数学知识归纳/" class="article-date">
+  <time datetime="2019-09-06T03:42:44.000Z" itemprop="datePublished">2019-09-06</time>
 </a>
     
   </div>
@@ -82,7 +83,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Hexo101
+      常用数学知识归纳
     </h1>
   
 
@@ -90,36 +91,80 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>使用Hexo和GitHub一分钟快速搭建属于自己的个人学习网站</p>
+        <p><a href="https://www.cnblogs.com/1024th/p/10623541.html" target="_blank" rel="noopener">链接</a></p>
 <a id="more"></a>
-<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm i hexo-cli -g</span><br><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-<h3 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># URL</span><br><span class="line">## If your site is put in a subdirectory, set url as &apos;http://yoursite.com/child&apos; and root as &apos;/child/&apos;</span><br><span class="line">url: http://yoursite.com/child</span><br><span class="line">root: /child/</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: https://github.com/yourname/your_repo.git</span><br><span class="line">  branch: gh-pages</span><br></pre></td></tr></table></figure>
-<h3 id="完成"><a href="#完成" class="headerlink" title="完成"></a>完成</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://yourname.github.io/your_path/</span><br></pre></td></tr></table></figure>
-<p>新鲜出炉</p>
-<p>就是这么迅速😏，接下来就是自己探索了</p>
+<h3 id="排列组合"><a href="#排列组合" class="headerlink" title="排列组合"></a>排列组合</h3><h4 id="0-1"><a href="#0-1" class="headerlink" title="0! = 1"></a>0! = 1</h4><h4 id="排列"><a href="#排列" class="headerlink" title="排列"></a>排列</h4><p>定义：从 n 个不同元素中，任取 m（m小于等于n）个不同的元素按照一定<strong>顺序</strong>排成一列，叫做从n个不同元素中取 m 个元素的一个排列。</p>
+<p><strong>$ A_n^m = n(n-1)(n-2)…(n-m+1) = \frac{n!}{(n-m)!} $</strong></p>
+<p><strong>推导：$ A_n^m = C_n^mA_m^m $</strong></p>
+<ul>
+<li>先从n个不同元素中选出m个元素有$ C_n^m $种可能。然后每种可能的全排列为$ A_m^m = m! $</li>
+<li>所以$ C_n^m = \frac{A_n^m}{A_m^m} = \frac{n!}{m!(n-m)!} $</li>
+</ul>
+<p><strong>推导：$ A_n^m = mA_{n-1}^{m-1} + A_{n-1}^m $</strong></p>
+<p>example：1,2,3,4,5 求$ A_5^3 $</p>
+<ul>
+<li>先取特定的一个数 1，再取两个数的排列有$ A_{n-1}^{m-1} $中取法</li>
+<li>然后将1 放到取出的两个数的排列中去，每种排列中1 可以放在3（m）种位置上</li>
+<li>所以先取有特定数的排列为$ mA_{n-1}^{m-1} $种取法</li>
+<li>剩下的不含特定数的排列取法为$ A_n^{m-1} $</li>
+<li>所以总的取法为$ A_n^m = mA_{n-1}^{m-1} + A_{n-1}^m $</li>
+<li><p>得证</p>
+</li>
+<li><p>根据下面的组合推导公式$ C_n^m = C_{n-1}^m + C_{n-1}^{m-1} $ 以及$ A_n^m = C_n^m * m! $</p>
+</li>
+<li>得到$ A_n^m = m!(\frac{A_{n-1}^m}{m!} + \frac{A_{n-1}^{m-1}}{(m-1)!}) = A_{n-1}^m + mA_{n-1}^{m-1} $</li>
+<li>得证</li>
+</ul>
+<h4 id="组合"><a href="#组合" class="headerlink" title="组合"></a>组合</h4><p>定义：从 n 个不同元素中，任取 m（m小于等于n）个元素并成一组，叫做从 n 个不同元素中取 m 个元素的一个组合。（没顺序要求）</p>
+<p><strong>$ C_n^m = \frac{A_n^m}{A_m^m} = \frac{A_n^m}{m!} = \frac{n!}{m!(n-m)!} $</strong></p>
+<p><strong>推导：$ C_n^m = C_n^{n-m} $</strong></p>
+<p><strong>推导：$ C_n^m = C_{n-1}^m + C_{n-1}^{m-1} $</strong></p>
+<p>example: 1,2,3,4,5 求$ C_5^2 $</p>
+<ul>
+<li>先取一个特定的数 1，再取第二个数有$ C_{n-1}^{m-1} = C_4^1 $种取法</li>
+<li>然后其他剩下没有 1 的数中求$ C_{n-1}^m = C_4^2 $种取法</li>
+<li>所有总共有$ C_{n-1}^{m} + C_{n-1}^{m-1} $种取法</li>
+<li>$ C_n^m = C_{n-1}^m + C_{n-1}^{m-1} $</li>
+<li>得证</li>
+</ul>
+<p><strong>推导：$ C_n^0 + C_n^1 + C_n^2 + … + C_n^n = 2^n $</strong></p>
+<p><strong>数学归纳法：</strong></p>
+<ol>
+<li>当m=1时，$C_1^0 + C_1^1 = 2 = 2^1$成立。</li>
+<li>假设当n = k 时等式成立，即：$ \sum_{i = 0}^{k}C_k^i = 2^k $ 成立时</li>
+<li>当n = k+1 时，<br>$ C_{k+1}^0 + C_{k+1}^1 + C_{k+1}^2 + … + C_{k+1}^k + C_{k+1}^{k+1} $<br>$ = C_{k+1}^0 + (C_k^0 + C_k^1) + (C_k^1 + C_k^2) + … + (C_k^{k-2} + C_k^{k-1}) + (C_k^{k-1} + C_k^k) + C_{k+1}^{k+1} $<br>$ = C_{k}^0 + (C_k^0 + C_k^1) + (C_k^1 + C_k^2) + … + (C_k^{k-2} + C_k^{k-1}) + (C_k^{k-1} + C_k^k) + C_k^k $<br>$ = 2(C_k^0 + C_k^1 + C_k^2 + … + C_K^k) $<br>$ = 2(2^k) $<br>$ = 2^{k+1} $</li>
+<li>由1，2，3得，等式对n都成立。</li>
+</ol>
+<h4 id="全排列"><a href="#全排列" class="headerlink" title="全排列"></a>全排列</h4><p>从n个不同元素中任取m（m≤n）个元素，按照一定的顺序排列起来，叫做从n个不同元素中取出m个元素的一个排列。当m=n时所有的排列情况叫全排列。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jayechong.github.io/pb/2019/04/28/hexo101/" data-id="ck2zymoox000387y7tl7exs3a" class="article-share-link">Share</a>
+      <a data-url="https://jayechong.github.io/pb/2019/09/06/常用数学知识归纳/" data-id="ck2zymop6000f87y7ljwkmjxp" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/pb/tags/数学/">数学</a></li></ul>
+
     </footer>
   </div>
   
     
 <nav id="article-nav">
   
-    <a href="/pb/2019/04/28/双向绑定实现之Proxy与defineProperty/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/pb/2019/09/11/傅里叶变换/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          双向绑定实现之Proxy与defineProperty
+          傅里叶变换
         
       </div>
     </a>
   
+  
+    <a href="/pb/2019/09/04/git指南/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">git指南</div>
+    </a>
   
 </nav>
 

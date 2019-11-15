@@ -5,19 +5,20 @@
   
 
   
-  <title>Hexo101 | ZY</title>
+  <title>数据库主从问题 | ZY</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="使用Hexo和GitHub一分钟快速搭建属于自己的个人学习网站">
+  <meta name="description" content="参考链接 为什么主从 Master负责写操作的负载，也就是说一切写的操作都在Master上进行，而读的操作则分摊到Slave上进行。这样一来的可以大大提高读取的效率。  在一般的互联网应用中，经过一些数据调查得出结论，读/写的比例大概在 10：1左右 ，也就是说大量的数据操作是集中在读的操作，这也就是为什么我们会有多个Slave的原因。   为什么分离 因为写操作涉及到锁的问题，不管是行锁还是表锁">
+<meta name="keywords" content="数据库,后端">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo101">
-<meta property="og:url" content="https://jayechong.github.io/pb/2019/04/28/hexo101/index.html">
+<meta property="og:title" content="数据库主从问题">
+<meta property="og:url" content="https://jayechong.github.io/pb/2019/10/31/数据库主从问题/index.html">
 <meta property="og:site_name" content="ZY">
-<meta property="og:description" content="使用Hexo和GitHub一分钟快速搭建属于自己的个人学习网站">
+<meta property="og:description" content="参考链接 为什么主从 Master负责写操作的负载，也就是说一切写的操作都在Master上进行，而读的操作则分摊到Slave上进行。这样一来的可以大大提高读取的效率。  在一般的互联网应用中，经过一些数据调查得出结论，读/写的比例大概在 10：1左右 ，也就是说大量的数据操作是集中在读的操作，这也就是为什么我们会有多个Slave的原因。   为什么分离 因为写操作涉及到锁的问题，不管是行锁还是表锁">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-29T09:00:17.000Z">
+<meta property="og:updated_time" content="2019-10-31T06:10:51.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo101">
-<meta name="twitter:description" content="使用Hexo和GitHub一分钟快速搭建属于自己的个人学习网站">
+<meta name="twitter:title" content="数据库主从问题">
+<meta name="twitter:description" content="参考链接 为什么主从 Master负责写操作的负载，也就是说一切写的操作都在Master上进行，而读的操作则分摊到Slave上进行。这样一来的可以大大提高读取的效率。  在一般的互联网应用中，经过一些数据调查得出结论，读/写的比例大概在 10：1左右 ，也就是说大量的数据操作是集中在读的操作，这也就是为什么我们会有多个Slave的原因。   为什么分离 因为写操作涉及到锁的问题，不管是行锁还是表锁">
   
     <link rel="alternate" href="/pb/atom.xml" title="ZY" type="application/atom+xml">
   
@@ -68,10 +69,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-hexo101" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-数据库主从问题" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/pb/2019/04/28/hexo101/" class="article-date">
-  <time datetime="2019-04-28T07:29:56.000Z" itemprop="datePublished">2019-04-28</time>
+    <a href="/pb/2019/10/31/数据库主从问题/" class="article-date">
+  <time datetime="2019-10-31T03:27:42.000Z" itemprop="datePublished">2019-10-31</time>
 </a>
     
   </div>
@@ -82,7 +83,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Hexo101
+      数据库主从问题
     </h1>
   
 
@@ -90,36 +91,63 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>使用Hexo和GitHub一分钟快速搭建属于自己的个人学习网站</p>
+        <p><a href="https://blog.csdn.net/xmh594603296/article/details/82461222" target="_blank" rel="noopener">参考链接</a></p>
+<h3 id="为什么主从"><a href="#为什么主从" class="headerlink" title="为什么主从"></a>为什么主从</h3><ul>
+<li><p>Master负责写操作的负载，也就是说一切写的操作都在Master上进行，而读的操作则分摊到Slave上进行。这样一来的可以大大提高读取的效率。</p>
+</li>
+<li><p>在一般的互联网应用中，经过一些数据调查得出结论，读/写的比例大概在 10：1左右 ，也就是说大量的数据操作是集中在读的操作，这也就是为什么我们会有多个Slave的原因。</p>
+</li>
+</ul>
+<h3 id="为什么分离"><a href="#为什么分离" class="headerlink" title="为什么分离"></a>为什么分离</h3><ul>
+<li>因为写操作涉及到锁的问题，不管是行锁还是表锁还是块锁，都是比较降低系统执行效率的事情。我们这样的分离是把写操作集中在一个节点上，而读操作其其他的N个节点上进行，从另一个方面有效的提高了读的效率，保证了系统的高可用性。</li>
+</ul>
+<h2 id="问题？"><a href="#问题？" class="headerlink" title="问题？"></a>问题？</h2><p>数据库集群,读写分离现在可以说是项目必备的了，但是我们如何保证其每个数据库的数据一致性</p>
 <a id="more"></a>
-<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm i hexo-cli -g</span><br><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-<h3 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># URL</span><br><span class="line">## If your site is put in a subdirectory, set url as &apos;http://yoursite.com/child&apos; and root as &apos;/child/&apos;</span><br><span class="line">url: http://yoursite.com/child</span><br><span class="line">root: /child/</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: https://github.com/yourname/your_repo.git</span><br><span class="line">  branch: gh-pages</span><br></pre></td></tr></table></figure>
-<h3 id="完成"><a href="#完成" class="headerlink" title="完成"></a>完成</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://yourname.github.io/your_path/</span><br></pre></td></tr></table></figure>
-<p>新鲜出炉</p>
-<p>就是这么迅速😏，接下来就是自己探索了</p>
+<h3 id="主从不同步"><a href="#主从不同步" class="headerlink" title="主从不同步"></a>主从不同步</h3><h4 id="半同步复制"><a href="#半同步复制" class="headerlink" title="半同步复制"></a>半同步复制</h4><p>原理：主库发生增删改操作时，等待从库及时复制了操作并通知了主库，才会把这个操作认为成功。</p>
+<p>优点：保证了数据一致性<br>缺点：慢</p>
+<h4 id="数据库中间件"><a href="#数据库中间件" class="headerlink" title="数据库中间件"></a>数据库中间件</h4><p>原理：</p>
+<pre><code>所有的数据库操作请求都走数据库中间件，写的请求路由到主库，读的请求路由到从库。当有对某个表/库的写请求过来时设置一个key同时设置一个允许主从同步的时间，假设是1秒。所以在写操作完之后如果立马有个读的请求过来，如果有对应的key，如果时间在1秒内，就到key对应的主库中读数据，否则路由到从库中。
+
+简单来说就是：给中间件一个同步时间，同步时间内读操作落到主库，同步时间外，读操作落到从库。
+</code></pre><p>优点：快，减少主库压力<br>缺点：同步时间需要经验</p>
+<h4 id="缓存记录写Key法"><a href="#缓存记录写Key法" class="headerlink" title="缓存记录写Key法"></a>缓存记录写Key法</h4><p>原理：</p>
+<pre><code>将某个库上的某个key要发生写操作，记录在cache里，并设置“经验主从同步时间”的cache超时时间，例如1s
+
+当读请求发生时：
+（1）先到cache里查看，对应库的对应key有没有相关数据
+（2）如果cache hit，有相关数据，说明这个key上刚发生过写操作，此时需要将请求路由到主库读最新的数据
+（3）如果cache miss，说明这个key上近期没有发生过写操作，此时将请求路由到从库，继续读写分离
+</code></pre><p>优点：相对于数据库中间件的形式相对成本较低</p>
+<p>缺点：引入了cache组件，并且读写数据库多了一步cache操作</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jayechong.github.io/pb/2019/04/28/hexo101/" data-id="ck2zymoox000387y7tl7exs3a" class="article-share-link">Share</a>
+      <a data-url="https://jayechong.github.io/pb/2019/10/31/数据库主从问题/" data-id="ck2zymop8000h87y747wb0i02" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/pb/tags/后端/">后端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/pb/tags/数据库/">数据库</a></li></ul>
+
     </footer>
   </div>
   
     
 <nav id="article-nav">
   
-    <a href="/pb/2019/04/28/双向绑定实现之Proxy与defineProperty/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/pb/2019/11/04/生产者/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          双向绑定实现之Proxy与defineProperty
+          生产者
         
       </div>
     </a>
   
+  
+    <a href="/pb/2019/09/11/傅里叶变换/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">傅里叶变换</div>
+    </a>
   
 </nav>
 
